@@ -5,10 +5,13 @@
     "license": "MIT",
     "minimum-stability": "stable",
     "require": {
-        "php"                          : ">=5.3.9",
+        "php"                          : ">=5.5.0",
+        "psr/log"                      : "~1.0",
         "symfony/config"               : "~2.3|~3.0",
         "symfony/dependency-injection" : "~2.3|~3.0",
-        "symfony/http-kernel"          : "~2.3|~3.0"
+        "symfony/http-foundation"      : "~2.3|~3.0",
+        "symfony/http-kernel"          : "~2.3|~3.0",
+        "symfony/validator"            : "~2.3|~3.0"
     },
     "config": {
         "bin-dir": "bin"

@@ -13,19 +13,22 @@
 
 namespace DataTables;
 
-use DataTables\DependencyInjection\DataTablesCompilerPass;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpFoundation\Request;
 
-class DataTablesBundle extends Bundle
+/**
+ * DataTables lookup service.
+ */
+interface DataTablesInterface
 {
     /**
-     * {@inheritdoc}
+     * Handles specified DataTable request.
+     *
+     * @param   Request $request Original request.
+     * @param   string  $id      DataTable ID.
+     *
+     * @return  array Data to return in JSON response.
+     *
+     * @throws  DataTableException
      */
-    public function build(ContainerBuilder $container)
-    {
-        parent::build($container);
-
-        $container->addCompilerPass(new DataTablesCompilerPass());
-    }
+    public function handle(Request $request, $id);
 }

@@ -13,19 +13,19 @@
 
 namespace DataTables;
 
-use DataTables\DependencyInjection\DataTablesCompilerPass;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpFoundation\Response;
 
-class DataTablesBundle extends Bundle
+/**
+ * Exception in last DataTable request handling.
+ * Contains HTTP status code and can be used in HTTP Response object.
+ */
+class DataTableException extends \Exception
 {
     /**
      * {@inheritdoc}
      */
-    public function build(ContainerBuilder $container)
+    public function __construct($message, $code = Response::HTTP_BAD_REQUEST, \Exception $previous = null)
     {
-        parent::build($container);
-
-        $container->addCompilerPass(new DataTablesCompilerPass());
+        parent::__construct($message, $code, $previous);
     }
 }
