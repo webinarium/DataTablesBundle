@@ -13,12 +13,17 @@
         "symfony/http-kernel"          : "~2.3|~3.0",
         "symfony/validator"            : "~2.3|~3.0"
     },
+    "require-dev": {
+        "doctrine/annotations"         : "~1.2",
+        "doctrine/cache"               : "~1.5",
+        "phpunit/phpunit"              : "~4.1"
+    },
     "config": {
         "bin-dir": "bin"
     },
     "autoload": {
         "psr-4": {
-            "DataTables\\": "src/"
+            "DataTables\\": [ "src/", "tests/" ]
         }
     }
 }

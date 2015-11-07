@@ -17,3 +17,9 @@ The recommended way to install is via Composer:
 composer.phar require "etraxis/datatables-bundle"
 composer.phar install
 ```
+
+## Development
+
+```bash
+./bin/phpunit --coverage-html=vendor/coverage
+```
