@@ -1,0 +1,8 @@
+checks:
+    php:
+        code_rating: true
+        duplication: false
+
+tools:
+    external_code_coverage:
+        runs: 2
