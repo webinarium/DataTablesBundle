@@ -23,5 +23,6 @@ composer.phar install
 ## Development
 
 ```bash
+./bin/php-cs-fixer fix
 ./bin/phpunit --coverage-html=vendor/coverage
 ```

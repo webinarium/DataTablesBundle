@@ -16,7 +16,8 @@
     "require-dev": {
         "doctrine/annotations"         : "~1.2",
         "doctrine/cache"               : "~1.5",
-        "phpunit/phpunit"              : "~4.1"
+        "phpunit/phpunit"              : "~4.1",
+        "fabpot/php-cs-fixer"          : "~1.10"
     },
     "config": {
         "bin-dir": "bin"
