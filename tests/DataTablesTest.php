@@ -14,80 +14,45 @@
 namespace DataTables;
 
 use Psr\Log\NullLogger;
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
-class SuccessfulTestDataTable implements DataTableHandlerInterface
-{
-    public function handle(DataTableQuery $request)
-    {
-        $results = new DataTableResults();
-
-        $results->recordsTotal    = 100;
-        $results->recordsFiltered = 10;
-        $results->data            = [];
-
-        return $results;
-    }
-}
-
-class ExceptionTestDataTable implements DataTableHandlerInterface
-{
-    public function handle(DataTableQuery $request)
-    {
-        throw new DataTableException('Something gone wrong.');
-    }
-}
-
-class NoInterfaceTestDataTable
-{
-    public function handle()
-    {
-        $results = new DataTableResults();
-
-        $results->recordsTotal    = 100;
-        $results->recordsFiltered = 10;
-        $results->data            = [];
-
-        return $results;
-    }
-}
-
-class InvalidResultsTestDataTable implements DataTableHandlerInterface
-{
-    public function handle(DataTableQuery $request)
-    {
-        $results = new DataTableResults();
-
-        $results->recordsTotal    = 100;
-        $results->recordsFiltered = 10;
-        $results->data            = null;
-
-        return $results;
-    }
-}
-
-class DataTablesFactoryTest extends \PHPUnit_Framework_TestCase
+class DataTablesTest extends \PHPUnit_Framework_TestCase
 {
     /** @var \DataTables\DataTablesInterface */
     protected $datatables;
 
     protected function setUp()
     {
-        $container = new Container();
+        $container = new ContainerBuilder();
         $logger    = new NullLogger();
 
         $validator = Validation::createValidatorBuilder()
             ->enableAnnotationMapping()
             ->getValidator();
 
-        $container->set('datatable.test.success',   new SuccessfulTestDataTable());
-        $container->set('datatable.test.exception', new ExceptionTestDataTable());
-        $container->set('datatable.test.interface', new NoInterfaceTestDataTable());
-        $container->set('datatable.test.invalid',   new InvalidResultsTestDataTable());
+        $container->set('logger',    $logger);
+        $container->set('validator', $validator);
 
-        $this->datatables = new DataTables($container, $logger, $validator);
+        $this->assertFalse($container->has('datatables'));
+
+        $bundle = new DataTablesBundle();
+        $bundle->build($container);
+
+        $extension = $bundle->getContainerExtension();
+        $extension->load([], $container);
+
+        $container->set('datatable.test.success',   new Handler\SuccessfulTestDataTable());
+        $container->set('datatable.test.exception', new Handler\ExceptionTestDataTable());
+        $container->set('datatable.test.interface', new Handler\NoInterfaceTestDataTable());
+        $container->set('datatable.test.invalid',   new Handler\InvalidResultsTestDataTable());
+
+        $container->compile();
+
+        $this->assertTrue($container->has('datatables'));
+
+        $this->datatables = $container->get('datatables');
 
         $this->datatables->addService('datatable.test.success',   'testSuccess');
         $this->datatables->addService('datatable.test.exception', 'testException');
