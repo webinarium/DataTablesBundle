@@ -1,5 +1,5 @@
 {
-    "name": "etraxis/datatables-bundle",
+    "name": "arodygin/datatables-bundle",
     "description": "DataTables Symfony bundle",
     "keywords": ["datatable", "datatables"],
     "license": "MIT",
