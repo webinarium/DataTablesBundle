@@ -7,6 +7,8 @@
 
 # DataTables Symfony bundle
 
+This bundle helps to implement data source actions for [DataTables](http://www.datatables.net/) JavaScript plugin when it's used in [server-side processing](http://www.datatables.net/manual/server-side) mode.
+
 ## Requirements
 
 PHP needs to be a minimum version of PHP 5.5.0.
@@ -26,3 +28,7 @@ composer.phar install
 ./bin/php-cs-fixer fix
 ./bin/phpunit --coverage-html=vendor/coverage
 ```
+
+## Usage
+
+Please see the complete usage example [here](../../wiki).
