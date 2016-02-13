@@ -31,4 +31,4 @@ composer.phar install
 
 ## Usage
 
-Please see the complete usage example [here](../../wiki).
+Please see the complete usage example [here](../../wiki/Example).
