@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015 Artem Rodygin
+//  Copyright (C) 2015-2016 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -13,114 +13,50 @@
 
 namespace DataTables;
 
-use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * A draw query from DataTables plugin.
  *
  * @see http://www.datatables.net/manual/server-side
  *
- * @property    int   $draw    Draw counter.
- * @property    int   $start   Index of first row to return, zero-based.
- * @property    int   $length  Total number of rows to return (-1 to return all rows).
- * @property    array $search  Global search value.
- * @property    array $order   Columns ordering (zero-based column index and direction).
- * @property    array $columns Columns information (searchable, orderable, search value, etc).
+ * @property-read   int      $start   Index of first row to return, zero-based.
+ * @property-read   int      $length  Total number of rows to return (-1 to return all rows).
+ * @property-read   Search   $search  Global search value.
+ * @property-read   Order[]  $order   Columns ordering (zero-based column index and direction).
+ * @property-read   Column[] $columns Columns information (searchable, orderable, search value, etc).
  */
-class DataTableQuery
+class DataTableQuery extends ValueObject
 {
-    /**
-     * @Assert\NotNull()
-     * @Assert\GreaterThanOrEqual(value = "0")
-     */
-    public $draw = 0;
+    protected $start;
+    protected $length;
+    protected $search;
+    protected $order;
+    protected $columns;
 
     /**
-     * @Assert\NotNull()
-     * @Assert\GreaterThanOrEqual(value = "0")
+     * Initializing constructor.
+     *
+     * @param   Parameters $params
      */
-    public $start = 0;
+    public function __construct(Parameters $params)
+    {
+        $this->start   = $params->start;
+        $this->length  = $params->length;
+        $this->search  = new Search($params->search['value'], $params->search['regex']);
+        $this->order   = [];
+        $this->columns = [];
 
-    /**
-     * @Assert\NotNull()
-     * @Assert\GreaterThanOrEqual(value = "-1")
-     */
-    public $length = -1;
+        foreach ($params->order as $order) {
+            $this->order[] = new Order($order['column'], $order['dir']);
+        }
 
-    /**
-     * @Assert\NotNull()
-     * @Assert\Collection(
-     *     fields = {
-     *         "value" = {
-     *             @Assert\Length(max = "100")
-     *         },
-     *         "regex" = {
-     *             @Assert\Choice(choices = {"false", "true"})
-     *         }
-     *     },
-     *     allowExtraFields   = false,
-     *     allowMissingFields = false
-     * )
-     */
-    public $search = [];
-
-    /**
-     * @Assert\NotNull()
-     * @Assert\Type(type = "array")
-     * @Assert\All({
-     *     @Assert\Collection(
-     *         fields = {
-     *             "column" = {
-     *                 @Assert\GreaterThanOrEqual(value = "0")
-     *             },
-     *             "dir" = {
-     *                 @Assert\Choice(choices = {"asc", "desc"})
-     *             }
-     *         },
-     *         allowExtraFields   = false,
-     *         allowMissingFields = false
-     *     )
-     * })
-     */
-    public $order = [];
-
-    /**
-     * @Assert\NotNull()
-     * @Assert\Type(type = "array")
-     * @Assert\All({
-     *     @Assert\Collection(
-     *         fields = {
-     *             "data" = {
-     *                 @Assert\GreaterThanOrEqual(value = "0")
-     *             },
-     *             "name" = {
-     *                 @Assert\Length(max = "100")
-     *             },
-     *             "searchable" = {
-     *                 @Assert\Choice(choices = {"false", "true"})
-     *             },
-     *             "orderable" = {
-     *                 @Assert\Choice(choices = {"false", "true"})
-     *             },
-     *             "search" = {
-     *                 @Assert\Collection(
-     *                     fields = {
-     *                         "value" = {
-     *                             @Assert\Length(max = "100")
-     *                         },
-     *                         "regex" = {
-     *                             @Assert\Choice(choices = {"false", "true"})
-     *                         }
-     *                     },
-     *                     allowExtraFields   = false,
-     *                     allowMissingFields = false
-     *                 )
-     *             }
-     *         },
-     *         allowExtraFields   = false,
-     *         allowMissingFields = false
-     *     )
-     * })
-     */
-    public $columns = [];
+        foreach ($params->columns as $column) {
+            $this->columns[] = new Column(
+                $column['data'],
+                $column['name'],
+                $column['searchable'],
+                $column['orderable'],
+                new Search($column['search']['value'], $column['search']['regex'])
+            );
+        }
+    }
 }

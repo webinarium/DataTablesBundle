@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015 Artem Rodygin
+//  Copyright (C) 2015-2016 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -65,16 +65,18 @@ class DataTables implements DataTablesInterface
     {
         $this->logger->debug('Handle DataTable request', [$id]);
 
-        $query = new DataTableQuery();
+        // Retrieve sent parameters.
+        $params = new Parameters();
 
-        $query->draw    = $request->get('draw');
-        $query->start   = $request->get('start');
-        $query->length  = $request->get('length');
-        $query->search  = $request->get('search');
-        $query->order   = $request->get('order');
-        $query->columns = $request->get('columns');
+        $params->draw    = $request->get('draw');
+        $params->start   = $request->get('start');
+        $params->length  = $request->get('length');
+        $params->search  = $request->get('search');
+        $params->order   = $request->get('order');
+        $params->columns = $request->get('columns');
 
-        $violations = $this->validator->validate($query);
+        // Validate sent parameters.
+        $violations = $this->validator->validate($params);
 
         if (count($violations)) {
             $message = $violations->get(0)->getMessage();
@@ -82,6 +84,7 @@ class DataTables implements DataTablesInterface
             throw new DataTableException($message);
         }
 
+        // Check for valid handler is registered.
         if (!array_key_exists($id, $this->services)) {
             $message = 'Unknown DataTable ID.';
             $this->logger->error($message, [$id]);
@@ -97,6 +100,10 @@ class DataTables implements DataTablesInterface
             throw new DataTableException($message);
         }
 
+        // Convert sent parameters into data model.
+        $query = new DataTableQuery($params);
+
+        // Pass the data model to the handler.
         $result = null;
 
         list($msec, $sec) = explode(' ', microtime());
@@ -116,6 +123,7 @@ class DataTables implements DataTablesInterface
             $this->logger->debug('DataTable processing time', [$timer_stopped - $timer_started, $this->services[$id]]);
         }
 
+        // Validate results returned from handler.
         $violations = $this->validator->validate($result);
 
         if (count($violations)) {
@@ -124,8 +132,9 @@ class DataTables implements DataTablesInterface
             throw new DataTableException($message);
         }
 
+        // Convert results into array as expected by DataTables plugin.
         return [
-            'draw'            => $query->draw,
+            'draw'            => $params->draw,
             'recordsTotal'    => $result->recordsTotal,
             'recordsFiltered' => $result->recordsFiltered,
             'data'            => $result->data,

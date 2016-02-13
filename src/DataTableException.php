@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015 Artem Rodygin
+//  Copyright (C) 2015-2016 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -13,19 +13,19 @@
 
 namespace DataTables;
 
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
  * Exception in last DataTable request handling.
  * Contains HTTP status code and can be used in HTTP Response object.
  */
-class DataTableException extends \Exception
+class DataTableException extends BadRequestHttpException
 {
     /**
      * {@inheritdoc}
      */
-    public function __construct($message, $code = Response::HTTP_BAD_REQUEST, \Exception $previous = null)
+    public function __construct($message, $code = 0, \Exception $previous = null)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message, $previous, $code);
     }
 }
