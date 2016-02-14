@@ -1,30 +1,35 @@
 {
     "name": "arodygin/datatables-bundle",
     "description": "DataTables Symfony bundle",
+    "type": "library",
     "keywords": ["datatable", "datatables"],
+    "homepage": "https://github.com/arodygin/datatables-bundle",
     "license": "MIT",
-    "minimum-stability": "stable",
     "require": {
         "php"                          : ">=5.5.0",
-        "psr/log"                      : "~1.0",
-        "symfony/config"               : "~2.3|~3.0",
-        "symfony/dependency-injection" : "~2.3|~3.0",
-        "symfony/http-foundation"      : "~2.3|~3.0",
-        "symfony/http-kernel"          : "~2.3|~3.0",
-        "symfony/validator"            : "~2.3|~3.0"
+        "psr/log"                      : "^1.0",
+        "symfony/config"               : "^2.3|^3.0",
+        "symfony/dependency-injection" : "^2.3|^3.0",
+        "symfony/http-foundation"      : "^2.3|^3.0",
+        "symfony/http-kernel"          : "^2.3|^3.0",
+        "symfony/validator"            : "^2.3|^3.0"
     },
     "require-dev": {
-        "doctrine/annotations"         : "~1.2",
-        "doctrine/cache"               : "~1.5",
-        "phpunit/phpunit"              : "~4.1",
-        "fabpot/php-cs-fixer"          : "~1.10"
+        "doctrine/annotations"         : "^1.2",
+        "doctrine/cache"               : "^1.5",
+        "phpunit/phpunit"              : "^4.1",
+        "fabpot/php-cs-fixer"          : "^1.10"
     },
-    "config": {
-        "bin-dir": "bin"
+    "replace": {
+        "etraxis/datatables-bundle": "self.version"
     },
     "autoload": {
         "psr-4": {
             "DataTables\\": [ "src/", "tests/" ]
         }
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "bin-dir": "bin"
     }
 }
