@@ -13,6 +13,8 @@ This bundle helps to implement data source actions for [DataTables](http://www.d
 
 PHP needs to be a minimum version of PHP 5.5.0.
 
+Symfony must be of 2.8 or above.
+
 ## Installation
 
 The recommended way to install is via Composer:

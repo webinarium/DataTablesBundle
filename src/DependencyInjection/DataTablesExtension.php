@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015 Artem Rodygin
+//  Copyright (C) 2015-2016 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -14,6 +14,7 @@
 namespace DataTables\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -23,7 +24,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class DataTablesExtension extends Extension
+class DataTablesExtension extends Extension implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}
@@ -32,5 +33,30 @@ class DataTablesExtension extends Extension
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('datatables.yml');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function process(ContainerBuilder $container)
+    {
+        if (!$container->has('datatables')) {
+            return;
+        }
+
+        $definition = $container->findDefinition('datatables');
+
+        $services = $container->findTaggedServiceIds('datatable');
+
+        foreach ($services as $id => $tags) {
+
+            if (isset($tags[0]['id'])) {
+
+                $definition->addMethodCall('addService', [
+                    $id,
+                    $tags[0]['id'],
+                ]);
+            }
+        }
     }
 }

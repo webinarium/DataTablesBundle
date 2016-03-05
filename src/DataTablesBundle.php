@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015 Artem Rodygin
+//  Copyright (C) 2015-2016 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -13,19 +13,8 @@
 
 namespace DataTables;
 
-use DataTables\DependencyInjection\DataTablesCompilerPass;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class DataTablesBundle extends Bundle
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function build(ContainerBuilder $container)
-    {
-        parent::build($container);
-
-        $container->addCompilerPass(new DataTablesCompilerPass());
-    }
 }
