@@ -35,14 +35,14 @@ class ValueObject
      *
      * @param   string $name Name of the property.
      *
-     * @throws  \Exception If the property doesn't exist.
+     * @throws  \BadMethodCallException If the property doesn't exist.
      *
      * @return  mixed Current value of the property.
      */
     public function __get($name)
     {
         if (!property_exists($this, $name)) {
-            throw new \Exception(sprintf('Unknown property "%s" in class "%s".', $name, get_class($this)));
+            throw new \BadMethodCallException(sprintf('Unknown property "%s" in class "%s".', $name, get_class($this)));
         }
 
         return $this->$name;
