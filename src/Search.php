@@ -30,7 +30,7 @@ class Search extends ValueObject
      * Initializing constructor.
      *
      * @param   string $value
-     * @param   string $regex
+     * @param   bool   $regex
      */
     public function __construct($value, $regex)
     {

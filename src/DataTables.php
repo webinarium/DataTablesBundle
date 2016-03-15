@@ -134,9 +134,9 @@ class DataTables implements DataTablesInterface
 
         // Convert results into array as expected by DataTables plugin.
         return [
-            'draw'            => $params->draw,
-            'recordsTotal'    => $result->recordsTotal,
-            'recordsFiltered' => $result->recordsFiltered,
+            'draw'            => (int) $params->draw,
+            'recordsTotal'    => (int) $result->recordsTotal,
+            'recordsFiltered' => (int) $result->recordsFiltered,
             'data'            => $result->data,
         ];
     }

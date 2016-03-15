@@ -39,23 +39,23 @@ class DataTableQuery extends ValueObject
      */
     public function __construct(Parameters $params)
     {
-        $this->start   = $params->start;
-        $this->length  = $params->length;
-        $this->search  = new Search($params->search['value'], $params->search['regex']);
+        $this->start   = (int) $params->start;
+        $this->length  = (int) $params->length;
+        $this->search  = new Search($params->search['value'], (bool) $params->search['regex']);
         $this->order   = [];
         $this->columns = [];
 
         foreach ($params->order as $order) {
-            $this->order[] = new Order($order['column'], $order['dir']);
+            $this->order[] = new Order((int) $order['column'], $order['dir']);
         }
 
         foreach ($params->columns as $column) {
             $this->columns[] = new Column(
                 $column['data'],
                 $column['name'],
-                $column['searchable'],
-                $column['orderable'],
-                new Search($column['search']['value'], $column['search']['regex'])
+                (bool) $column['searchable'],
+                (bool) $column['orderable'],
+                new Search($column['search']['value'], (bool) $column['search']['regex'])
             );
         }
     }
