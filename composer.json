@@ -3,7 +3,7 @@
     "description": "DataTables Symfony bundle",
     "type": "library",
     "keywords": ["datatable", "datatables"],
-    "homepage": "https://github.com/arodygin/datatables-bundle",
+    "homepage": "https://github.com/arodygin/DataTablesBundle",
     "license": "MIT",
     "require": {
         "php"                          : ">=5.5.0",
@@ -21,14 +21,13 @@
         "fabpot/php-cs-fixer"          : "^1.10"
     },
     "replace": {
-        "etraxis/datatables-bundle": "self.version"
+        "etraxis/datatables-bundle": "*"
     },
     "autoload": {
         "psr-4": {
             "DataTables\\": [ "src/", "tests/" ]
         }
     },
-    "minimum-stability": "stable",
     "config": {
         "bin-dir": "bin"
     }
