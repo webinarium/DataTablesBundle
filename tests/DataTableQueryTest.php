@@ -20,7 +20,7 @@ class DataTableQueryTest extends \PHPUnit_Framework_TestCase
     public function testSuccess()
     {
         $request = new Request([
-            'draw'    => uniqid(),
+            'draw'    => mt_rand(),
             'start'   => 20,
             'length'  => 10,
             'search'  => ['value' => null, 'regex' => false],
