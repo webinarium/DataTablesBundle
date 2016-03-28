@@ -35,7 +35,7 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
         $container->set('logger',    $logger);
         $container->set('validator', $validator);
 
-        $this->assertFalse($container->has('datatables'));
+        self::assertFalse($container->has('datatables'));
 
         $bundle = new DataTablesBundle();
         $bundle->build($container);
@@ -50,7 +50,7 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
 
         $container->compile();
 
-        $this->assertTrue($container->has('datatables'));
+        self::assertTrue($container->has('datatables'));
 
         $this->datatables = $container->get('datatables');
 
@@ -82,7 +82,7 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
 
         $results = $this->datatables->handle($request, 'testSuccess');
 
-        $this->assertEquals($expected, $results);
+        self::assertEquals($expected, $results);
     }
 
     /**

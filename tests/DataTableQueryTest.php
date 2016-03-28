@@ -45,30 +45,30 @@ class DataTableQueryTest extends \PHPUnit_Framework_TestCase
 
         $query = new DataTableQuery($params);
 
-        $this->assertEquals(20, $query->start);
-        $this->assertEquals(10, $query->length);
+        self::assertEquals(20, $query->start);
+        self::assertEquals(10, $query->length);
 
-        $this->assertEquals('', $query->search->value);
-        $this->assertFalse($query->search->regex);
+        self::assertEquals('', $query->search->value);
+        self::assertFalse($query->search->regex);
 
-        $this->assertCount(2, $query->order);
-        $this->assertEquals(1, $query->order[0]->column);
-        $this->assertEquals(0, $query->order[1]->column);
-        $this->assertEquals(Order::DESC, $query->order[0]->dir);
-        $this->assertEquals(Order::ASC, $query->order[1]->dir);
+        self::assertCount(2, $query->order);
+        self::assertEquals(1, $query->order[0]->column);
+        self::assertEquals(0, $query->order[1]->column);
+        self::assertEquals(Order::DESC, $query->order[0]->dir);
+        self::assertEquals(Order::ASC, $query->order[1]->dir);
 
-        $this->assertCount(2, $query->columns);
-        $this->assertEquals(0, $query->columns[0]->data);
-        $this->assertEquals(1, $query->columns[1]->data);
-        $this->assertEquals('#1', $query->columns[0]->name);
-        $this->assertEquals('#2', $query->columns[1]->name);
-        $this->assertTrue($query->columns[0]->searchable);
-        $this->assertFalse($query->columns[1]->searchable);
-        $this->assertFalse($query->columns[0]->orderable);
-        $this->assertTrue($query->columns[1]->orderable);
-        $this->assertEquals('first', $query->columns[0]->search->value);
-        $this->assertEquals('second', $query->columns[1]->search->value);
-        $this->assertFalse($query->columns[0]->search->regex);
-        $this->assertTrue($query->columns[1]->search->regex);
+        self::assertCount(2, $query->columns);
+        self::assertEquals(0, $query->columns[0]->data);
+        self::assertEquals(1, $query->columns[1]->data);
+        self::assertEquals('#1', $query->columns[0]->name);
+        self::assertEquals('#2', $query->columns[1]->name);
+        self::assertTrue($query->columns[0]->searchable);
+        self::assertFalse($query->columns[1]->searchable);
+        self::assertFalse($query->columns[0]->orderable);
+        self::assertTrue($query->columns[1]->orderable);
+        self::assertEquals('first', $query->columns[0]->search->value);
+        self::assertEquals('second', $query->columns[1]->search->value);
+        self::assertFalse($query->columns[0]->search->regex);
+        self::assertTrue($query->columns[1]->search->regex);
     }
 }

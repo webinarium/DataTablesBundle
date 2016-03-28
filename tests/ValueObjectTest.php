@@ -17,8 +17,8 @@ class ValueObjectTest extends \PHPUnit_Framework_TestCase
     {
         $object = new MyTestClass();
 
-        $this->assertTrue(isset($object->property));
-        $this->assertFalse(isset($object->unknown));
+        self::assertTrue(isset($object->property));
+        self::assertFalse(isset($object->unknown));
     }
 
     public function testGetPropertySuccess()
@@ -28,7 +28,7 @@ class ValueObjectTest extends \PHPUnit_Framework_TestCase
 
         $object->setProperty($expected);
 
-        $this->assertEquals($expected, $object->property);
+        self::assertEquals($expected, $object->property);
     }
 
     /**
