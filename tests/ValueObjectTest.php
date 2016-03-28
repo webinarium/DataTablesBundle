@@ -11,24 +11,6 @@
 
 namespace DataTables;
 
-/**
- * @property-read   mixed $property
- */
-class MyTestClass extends ValueObject
-{
-    protected $property;
-
-    public function setProperty($value)
-    {
-        $this->property = $value;
-    }
-
-    public function getProperty()
-    {
-        return $this->property;
-    }
-}
-
 class ValueObjectTest extends \PHPUnit_Framework_TestCase
 {
     public function testIsSet()
