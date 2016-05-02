@@ -6,7 +6,7 @@
     "homepage": "https://github.com/arodygin/DataTablesBundle",
     "license": "MIT",
     "require": {
-        "php"                          : ">=5.5.0",
+        "php"                          : ">=5.5",
         "psr/log"                      : "^1.0",
         "symfony/config"               : "^2.8|^3.0",
         "symfony/dependency-injection" : "^2.8|^3.0",
