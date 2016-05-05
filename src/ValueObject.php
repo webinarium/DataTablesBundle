@@ -25,7 +25,7 @@ class ValueObject
      *
      * @return  bool TRUE if the property exists, FALSE otherwise.
      */
-    public function __isset($name)
+    public function __isset(string $name): bool
     {
         return property_exists($this, $name);
     }
@@ -39,7 +39,7 @@ class ValueObject
      *
      * @return  mixed Current value of the property.
      */
-    public function __get($name)
+    public function __get(string $name)
     {
         if (!property_exists($this, $name)) {
             throw new \BadMethodCallException(sprintf('Unknown property "%s" in class "%s".', $name, get_class($this)));

@@ -27,5 +27,5 @@ interface DataTableHandlerInterface
      *
      * @throws  DataTableException
      */
-    public function handle(DataTableQuery $request);
+    public function handle(DataTableQuery $request): DataTableResults;
 }

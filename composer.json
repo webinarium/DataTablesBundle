@@ -6,7 +6,7 @@
     "homepage": "https://github.com/arodygin/DataTablesBundle",
     "license": "MIT",
     "require": {
-        "php"                          : ">=5.5",
+        "php"                          : ">=7.0",
         "psr/log"                      : "^1.0",
         "symfony/config"               : "^2.8|^3.0",
         "symfony/dependency-injection" : "^2.8|^3.0",
@@ -17,7 +17,7 @@
     "require-dev": {
         "doctrine/annotations"         : "^1.2",
         "doctrine/cache"               : "^1.5",
-        "phpunit/phpunit"              : "^4.1",
+        "phpunit/phpunit"              : "^5.0",
         "fabpot/php-cs-fixer"          : "^1.10"
     },
     "replace": {

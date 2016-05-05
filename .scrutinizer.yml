@@ -4,5 +4,4 @@ checks:
         duplication: false
 
 tools:
-    external_code_coverage:
-        runs: 2
+    external_code_coverage: true

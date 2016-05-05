@@ -32,7 +32,7 @@ class Search extends ValueObject
      * @param   string $value
      * @param   bool   $regex
      */
-    public function __construct($value, $regex)
+    public function __construct(string $value = null, bool $regex = false)
     {
         $this->value = $value;
         $this->regex = $regex;

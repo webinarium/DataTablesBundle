@@ -35,7 +35,7 @@ class Order extends ValueObject
      * @param   int    $column
      * @param   string $dir
      */
-    public function __construct($column, $dir)
+    public function __construct(int $column, string $dir)
     {
         $this->column = $column;
         $this->dir    = $dir;

@@ -11,7 +11,7 @@ This bundle helps to implement data source actions for [DataTables](http://www.d
 
 ## Requirements
 
-PHP needs to be a minimum version of PHP 5.5.
+PHP needs to be a minimum version of PHP 7.0.
 
 Symfony must be of 2.8 or above.
 

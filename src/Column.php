@@ -41,7 +41,7 @@ class Column extends ValueObject
      * @param   bool   $orderable
      * @param   Search $search
      */
-    public function __construct($data, $name, $searchable, $orderable, Search $search)
+    public function __construct(string $data, string $name, bool $searchable, bool $orderable, Search $search)
     {
         $this->data       = $data;
         $this->name       = $name;

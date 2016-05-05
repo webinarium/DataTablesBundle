@@ -30,5 +30,5 @@ interface DataTablesInterface
      *
      * @throws  DataTableException
      */
-    public function handle(Request $request, $id);
+    public function handle(Request $request, string $id): array;
 }

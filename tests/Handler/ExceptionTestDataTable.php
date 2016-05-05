@@ -16,10 +16,11 @@ namespace DataTables\Handler;
 use DataTables\DataTableException;
 use DataTables\DataTableHandlerInterface;
 use DataTables\DataTableQuery;
+use DataTables\DataTableResults;
 
 class ExceptionTestDataTable implements DataTableHandlerInterface
 {
-    public function handle(DataTableQuery $request)
+    public function handle(DataTableQuery $request): DataTableResults
     {
         throw new DataTableException('Something gone wrong.');
     }

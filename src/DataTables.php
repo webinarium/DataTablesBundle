@@ -53,7 +53,7 @@ class DataTables implements DataTablesInterface
      * @param   string $service Service ID of the DataTable handler.
      * @param   string $id      DataTable ID.
      */
-    public function addService($service, $id)
+    public function addService(string $service, string $id)
     {
         $this->services[$id] = $service;
     }
@@ -61,7 +61,7 @@ class DataTables implements DataTablesInterface
     /**
      * {@inheritdoc}
      */
-    public function handle(Request $request, $id)
+    public function handle(Request $request, string $id): array
     {
         $this->logger->debug('Handle DataTable request', [$id]);
 

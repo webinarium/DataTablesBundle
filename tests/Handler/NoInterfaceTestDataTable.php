@@ -17,7 +17,7 @@ use DataTables\DataTableResults;
 
 class NoInterfaceTestDataTable
 {
-    public function handle()
+    public function handle(): DataTableResults
     {
         $results = new DataTableResults();
 

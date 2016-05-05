@@ -19,7 +19,7 @@ use DataTables\DataTableResults;
 
 class InvalidResultsTestDataTable implements DataTableHandlerInterface
 {
-    public function handle(DataTableQuery $request)
+    public function handle(DataTableQuery $request): DataTableResults
     {
         $results = new DataTableResults();
 
