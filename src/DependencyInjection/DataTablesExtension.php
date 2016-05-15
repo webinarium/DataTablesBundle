@@ -17,6 +17,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
@@ -55,8 +56,8 @@ class DataTablesExtension extends Extension implements CompilerPassInterface
                 if (array_key_exists('id', $tag)) {
 
                     $definition->addMethodCall('addService', [
-                        $id,
                         $tag['id'],
+                        new Reference($id),
                     ]);
                 }
             }

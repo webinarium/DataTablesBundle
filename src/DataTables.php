@@ -14,7 +14,6 @@
 namespace DataTables;
 
 use Psr\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -23,26 +22,20 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class DataTables implements DataTablesInterface
 {
-    protected $container;
     protected $logger;
     protected $validator;
 
-    /** @var array List of registered DataTable services. */
+    /** @var DataTableHandlerInterface[] List of registered DataTable services. */
     protected $services = [];
 
     /**
      * Dependency Injection constructor.
      *
-     * @param   ContainerInterface $container
      * @param   LoggerInterface    $logger
      * @param   ValidatorInterface $validator
      */
-    public function __construct(
-        ContainerInterface $container,
-        LoggerInterface    $logger,
-        ValidatorInterface $validator)
+    public function __construct(LoggerInterface $logger, ValidatorInterface $validator)
     {
-        $this->container = $container;
         $this->logger    = $logger;
         $this->validator = $validator;
     }
@@ -50,10 +43,10 @@ class DataTables implements DataTablesInterface
     /**
      * Registers specified DataTable handler.
      *
-     * @param   string $service Service ID of the DataTable handler.
-     * @param   string $id      DataTable ID.
+     * @param   string                    $id      DataTable ID.
+     * @param   DataTableHandlerInterface $service Service of the DataTable handler.
      */
-    public function addService(string $service, string $id)
+    public function addService(string $id, DataTableHandlerInterface $service)
     {
         $this->services[$id] = $service;
     }
@@ -91,15 +84,6 @@ class DataTables implements DataTablesInterface
             throw new DataTableException($message);
         }
 
-        /** @var DataTableHandlerInterface $handler */
-        $handler = $this->container->get($this->services[$id]);
-
-        if (!$handler instanceof DataTableHandlerInterface) {
-            $message = 'DataTable handler must implement "DataTableHandlerInterface" interface.';
-            $this->logger->error($message, [$this->services[$id]]);
-            throw new DataTableException($message);
-        }
-
         // Convert sent parameters into data model.
         $query = new DataTableQuery($params);
 
@@ -110,7 +94,7 @@ class DataTables implements DataTablesInterface
         $timer_started    = (float) $msec + (float) $sec;
 
         try {
-            $result = $handler->handle($query);
+            $result = $this->services[$id]->handle($query);
         }
         catch (\Exception $e) {
             $this->logger->error($e->getMessage(), [$this->services[$id]]);

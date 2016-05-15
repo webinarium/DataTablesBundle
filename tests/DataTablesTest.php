@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015 Artem Rodygin
+//  Copyright (C) 2015-2016 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -43,21 +43,13 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
         $extension = $bundle->getContainerExtension();
         $extension->load([], $container);
 
-        $container->set('datatable.test.success',   new Handler\SuccessfulTestDataTable());
-        $container->set('datatable.test.exception', new Handler\ExceptionTestDataTable());
-        $container->set('datatable.test.interface', new Handler\NoInterfaceTestDataTable());
-        $container->set('datatable.test.invalid',   new Handler\InvalidResultsTestDataTable());
-
-        $container->compile();
-
         self::assertTrue($container->has('datatables'));
 
         $this->datatables = $container->get('datatables');
 
-        $this->datatables->addService('datatable.test.success',   'testSuccess');
-        $this->datatables->addService('datatable.test.exception', 'testException');
-        $this->datatables->addService('datatable.test.interface', 'testInterface');
-        $this->datatables->addService('datatable.test.invalid',   'testInvalid');
+        $this->datatables->addService('testSuccess',   new Handler\SuccessfulTestDataTable());
+        $this->datatables->addService('testException', new Handler\ExceptionTestDataTable());
+        $this->datatables->addService('testInvalid',   new Handler\InvalidResultsTestDataTable());
     }
 
     public function testSuccess()
@@ -136,24 +128,6 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->datatables->handle($request, 'testUnknown');
-    }
-
-    /**
-     * @expectedException \DataTables\DataTableException
-     * @expectedExceptionMessage DataTable handler must implement "DataTableHandlerInterface" interface.
-     */
-    public function testNoInterface()
-    {
-        $request = new Request([
-            'draw'    => mt_rand(),
-            'start'   => 0,
-            'length'  => 10,
-            'search'  => ['value' => null, 'regex' => 'false'],
-            'order'   => [],
-            'columns' => [],
-        ]);
-
-        $this->datatables->handle($request, 'testInterface');
     }
 
     /**
