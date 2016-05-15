@@ -50,12 +50,15 @@ class DataTablesExtension extends Extension implements CompilerPassInterface
 
         foreach ($services as $id => $tags) {
 
-            if (array_key_exists(0, $tags) && array_key_exists('id', $tags[0])) {
+            foreach ($tags as $tag) {
 
-                $definition->addMethodCall('addService', [
-                    $id,
-                    $tags[0]['id'],
-                ]);
+                if (array_key_exists('id', $tag)) {
+
+                    $definition->addMethodCall('addService', [
+                        $id,
+                        $tag['id'],
+                    ]);
+                }
             }
         }
     }
