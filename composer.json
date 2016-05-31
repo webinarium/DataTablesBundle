@@ -17,7 +17,7 @@
     "require-dev": {
         "doctrine/annotations"         : "^1.2",
         "doctrine/cache"               : "^1.5",
-        "fabpot/php-cs-fixer"          : "^1.10"
+        "friendsofphp/php-cs-fixer"    : "^1.11"
     },
     "replace": {
         "etraxis/datatables-bundle": "*"
