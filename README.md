@@ -39,8 +39,8 @@ public function registerBundles()
 ## Development
 
 ```bash
+phpunit --coverage-html=vendor/coverage
 ./bin/php-cs-fixer fix
-./bin/phpunit --coverage-html=vendor/coverage
 ```
 
 ## Usage
