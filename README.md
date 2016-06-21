@@ -21,7 +21,6 @@ The recommended way to install is via Composer:
 
 ```bash
 composer require "arodygin/datatables-bundle"
-composer install
 ```
 
 Then, add the following line in the `app/AppKernel.php` file to enable this bundle:
