@@ -16,7 +16,7 @@ namespace DataTables;
 /**
  * Search parameters as part of DataTables request.
  *
- * @see http://www.datatables.net/manual/server-side
+ * @see https://www.datatables.net/manual/server-side
  *
  * @property-read   string $value Search value.
  * @property-read   bool   $regex Whether the search value should be treated as a regular expression for advanced searching.

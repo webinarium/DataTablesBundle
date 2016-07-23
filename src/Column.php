@@ -16,7 +16,7 @@ namespace DataTables;
 /**
  * Column parameters as part of DataTables request.
  *
- * @see http://www.datatables.net/manual/server-side
+ * @see https://www.datatables.net/manual/server-side
  *
  * @property-read   string $data       Column's data source.
  * @property-read   string $name       Column's name.

@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Data to return to DataTables plugin.
  *
- * @see http://www.datatables.net/manual/server-side
+ * @see https://www.datatables.net/manual/server-side
  *
  * @property    int   $recordsTotal    Total records, before filtering.
  * @property    int   $recordsFiltered Total records, after filtering.

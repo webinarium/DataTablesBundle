@@ -16,7 +16,7 @@ namespace DataTables;
 /**
  * Ordering parameters as part of DataTables request.
  *
- * @see http://www.datatables.net/manual/server-side
+ * @see https://www.datatables.net/manual/server-side
  *
  * @property-read   int    $column Column to which ordering should be applied.
  * @property-read   string $dir    Ordering direction for this column.

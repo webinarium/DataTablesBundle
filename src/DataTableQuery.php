@@ -16,7 +16,7 @@ namespace DataTables;
 /**
  * A draw query from DataTables plugin.
  *
- * @see http://www.datatables.net/manual/server-side
+ * @see https://www.datatables.net/manual/server-side
  *
  * @property-read   int      $start   Index of first row to return, zero-based.
  * @property-read   int      $length  Total number of rows to return (-1 to return all rows).

@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Sent parameters from DataTables plugin.
  *
- * @see http://www.datatables.net/manual/server-side
+ * @see https://www.datatables.net/manual/server-side
  *
  * @property    int   $draw    Draw counter.
  * @property    int   $start   Index of first row to return, zero-based.
