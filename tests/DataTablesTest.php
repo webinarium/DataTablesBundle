@@ -74,7 +74,7 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
 
         $results = $this->datatables->handle($request, 'testSuccess');
 
-        self::assertEquals($expected, $results);
+        self::assertEquals(json_encode($expected), json_encode($results));
     }
 
     /**

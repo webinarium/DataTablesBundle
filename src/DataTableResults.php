@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @property    int   $recordsFiltered Total records, after filtering.
  * @property    array $data            The data to be displayed in the table.
  */
-class DataTableResults
+class DataTableResults implements \JsonSerializable
 {
     /**
      * @Assert\NotNull()
@@ -43,4 +43,25 @@ class DataTableResults
      * @Assert\Type(type = "array")
      */
     public $data = [];
+
+    /**
+     * @Assert\NotNull()
+     * @Assert\GreaterThanOrEqual(value = "0")
+     */
+    private $draw = 0;
+
+    /**
+     * Convert results into array as expected by DataTables plugin.
+     *
+     * @return  array
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'draw'            => (int) $this->draw,
+            'recordsTotal'    => (int) $this->recordsTotal,
+            'recordsFiltered' => (int) $this->recordsFiltered,
+            'data'            => $this->data,
+        ];
+    }
 }

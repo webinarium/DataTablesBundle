@@ -26,9 +26,9 @@ interface DataTablesInterface
      * @param   Request $request Original request.
      * @param   string  $id      DataTable ID.
      *
-     * @return  array Data to return in JSON response.
+     * @return  DataTableResults Object with data to return in JSON response.
      *
      * @throws  DataTableException
      */
-    public function handle(Request $request, string $id): array;
+    public function handle(Request $request, string $id): DataTableResults;
 }

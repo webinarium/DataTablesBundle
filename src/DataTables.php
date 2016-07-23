@@ -54,7 +54,7 @@ class DataTables implements DataTablesInterface
     /**
      * {@inheritdoc}
      */
-    public function handle(Request $request, string $id): array
+    public function handle(Request $request, string $id): DataTableResults
     {
         $this->logger->debug('Handle DataTable request', [$id]);
 
@@ -116,12 +116,10 @@ class DataTables implements DataTablesInterface
             throw new DataTableException($message);
         }
 
-        // Convert results into array as expected by DataTables plugin.
-        return [
-            'draw'            => (int) $params->draw,
-            'recordsTotal'    => (int) $result->recordsTotal,
-            'recordsFiltered' => (int) $result->recordsFiltered,
-            'data'            => $result->data,
-        ];
+        $reflection = new \ReflectionProperty(DataTableResults::class, 'draw');
+        $reflection->setAccessible(true);
+        $reflection->setValue($result, $params->draw);
+
+        return $result;
     }
 }
