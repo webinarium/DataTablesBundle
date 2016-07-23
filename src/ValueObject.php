@@ -47,4 +47,14 @@ class ValueObject
 
         return $this->$name;
     }
+
+    /**
+     * Prevents object's properties from modification.
+     *
+     * @param   string $name  Name of the property.
+     * @param   mixed  $value New value of the property.
+     */
+    final public function __set(string $name, $value)
+    {
+    }
 }
