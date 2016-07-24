@@ -90,8 +90,7 @@ class DataTables implements DataTablesInterface
         // Pass the data model to the handler.
         $result = null;
 
-        list($msec, $sec) = explode(' ', microtime());
-        $timer_started    = (float) $msec + (float) $sec;
+        $timer_started = microtime(true);
 
         try {
             $result = $this->services[$id]->handle($query);
@@ -101,9 +100,7 @@ class DataTables implements DataTablesInterface
             throw new DataTableException($e->getMessage());
         }
         finally {
-            list($msec, $sec) = explode(' ', microtime());
-            $timer_stopped    = (float) $msec + (float) $sec;
-
+            $timer_stopped = microtime(true);
             $this->logger->debug('DataTable processing time', [$timer_stopped - $timer_started, $this->services[$id]]);
         }
 
