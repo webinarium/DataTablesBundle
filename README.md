@@ -1,4 +1,5 @@
 [![License](https://poser.pugx.org/arodygin/datatables-bundle/license)](https://packagist.org/packages/arodygin/datatables-bundle)
+[![PHP](https://img.shields.io/badge/PHP-7.0%2B-blue.svg)](https://secure.php.net/migration70)
 [![Latest Stable Version](https://poser.pugx.org/arodygin/datatables-bundle/v/stable)](https://packagist.org/packages/arodygin/datatables-bundle)
 [![Build Status](https://travis-ci.org/arodygin/DataTablesBundle.svg?branch=master)](https://travis-ci.org/arodygin/DataTablesBundle)
 [![Code Coverage](https://scrutinizer-ci.com/g/arodygin/DataTablesBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/arodygin/DataTablesBundle/?branch=master)
