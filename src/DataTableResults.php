@@ -26,6 +26,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class DataTableResults implements \JsonSerializable
 {
+    const DT_ROW_ID    = 'DT_RowId';
+    const DT_ROW_CLASS = 'DT_RowClass';
+    const DT_ROW_DATA  = 'DT_RowData';
+    const DT_ROW_ATTR  = 'DT_RowAttr';
+
     /**
      * @Assert\NotNull()
      * @Assert\GreaterThanOrEqual(value = "0")
