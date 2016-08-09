@@ -24,7 +24,7 @@ namespace DataTables;
  * @property-read   Order[]  $order   Columns ordering (zero-based column index and direction).
  * @property-read   Column[] $columns Columns information (searchable, orderable, search value, etc).
  */
-class DataTableQuery extends ValueObject
+class DataTableQuery extends ValueObject implements \JsonSerializable
 {
     protected $start;
     protected $length;
@@ -63,5 +63,23 @@ class DataTableQuery extends ValueObject
                 new Search($column['search']['value'], (bool) $column['search']['regex'])
             );
         }, $params->columns);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize()
+    {
+        $callback = function (\JsonSerializable $item) {
+            return $item->jsonSerialize();
+        };
+
+        return [
+            'start'   => $this->start,
+            'length'  => $this->length,
+            'search'  => $this->search->jsonSerialize(),
+            'order'   => array_map($callback, $this->order),
+            'columns' => array_map($callback, $this->columns),
+        ];
     }
 }

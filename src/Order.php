@@ -21,7 +21,7 @@ namespace DataTables;
  * @property-read   int    $column Column to which ordering should be applied.
  * @property-read   string $dir    Ordering direction for this column.
  */
-class Order extends ValueObject
+class Order extends ValueObject implements \JsonSerializable
 {
     const ASC  = 'asc';
     const DESC = 'desc';
@@ -39,5 +39,16 @@ class Order extends ValueObject
     {
         $this->column = $column;
         $this->dir    = $dir;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'column' => $this->column,
+            'dir'    => $this->dir,
+        ];
     }
 }

@@ -21,7 +21,7 @@ namespace DataTables;
  * @property-read   string $value Search value.
  * @property-read   bool   $regex Whether the search value should be treated as a regular expression for advanced searching.
  */
-class Search extends ValueObject
+class Search extends ValueObject implements \JsonSerializable
 {
     protected $value;
     protected $regex;
@@ -36,5 +36,16 @@ class Search extends ValueObject
     {
         $this->value = $value;
         $this->regex = $regex;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'value' => $this->value,
+            'regex' => $this->regex,
+        ];
     }
 }

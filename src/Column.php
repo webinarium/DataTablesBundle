@@ -24,7 +24,7 @@ namespace DataTables;
  * @property-read   bool   $orderable  Flag to indicate if this column is orderable or not.
  * @property-read   Search $search     Search value to apply to this specific column.
  */
-class Column extends ValueObject
+class Column extends ValueObject implements \JsonSerializable
 {
     protected $data;
     protected $name;
@@ -48,5 +48,19 @@ class Column extends ValueObject
         $this->searchable = $searchable;
         $this->orderable  = $orderable;
         $this->search     = $search;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'data'       => $this->data,
+            'name'       => $this->name,
+            'searchable' => $this->searchable,
+            'orderable'  => $this->orderable,
+            'search'     => $this->search->jsonSerialize(),
+        ];
     }
 }

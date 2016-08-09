@@ -17,13 +17,18 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DataTableQueryTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSuccess()
+    /** @var Parameters */
+    protected $parameters;
+
+    protected function setUp()
     {
+        parent::setUp();
+
         $request = new Request([
             'draw'    => mt_rand(),
             'start'   => 20,
             'length'  => 10,
-            'search'  => ['value' => null, 'regex' => false],
+            'search'  => ['value' => 'symfony', 'regex' => true],
             'order'   => [
                 ['column' => 1, 'dir' => 'desc'],
                 ['column' => 0, 'dir' => 'asc'],
@@ -34,22 +39,25 @@ class DataTableQueryTest extends \PHPUnit_Framework_TestCase
             ],
         ]);
 
-        $params = new Parameters();
+        $this->parameters = new Parameters();
 
-        $params->draw    = $request->get('draw');
-        $params->start   = $request->get('start');
-        $params->length  = $request->get('length');
-        $params->search  = $request->get('search');
-        $params->order   = $request->get('order');
-        $params->columns = $request->get('columns');
+        $this->parameters->draw    = $request->get('draw');
+        $this->parameters->start   = $request->get('start');
+        $this->parameters->length  = $request->get('length');
+        $this->parameters->search  = $request->get('search');
+        $this->parameters->order   = $request->get('order');
+        $this->parameters->columns = $request->get('columns');
+    }
 
-        $query = new DataTableQuery($params);
+    public function testSuccess()
+    {
+        $query = new DataTableQuery($this->parameters);
 
         self::assertEquals(20, $query->start);
         self::assertEquals(10, $query->length);
 
-        self::assertEquals('', $query->search->value);
-        self::assertFalse($query->search->regex);
+        self::assertEquals('symfony', $query->search->value);
+        self::assertTrue($query->search->regex);
 
         self::assertCount(2, $query->order);
         self::assertEquals(1, $query->order[0]->column);
@@ -70,5 +78,26 @@ class DataTableQueryTest extends \PHPUnit_Framework_TestCase
         self::assertEquals('second', $query->columns[1]->search->value);
         self::assertFalse($query->columns[0]->search->regex);
         self::assertTrue($query->columns[1]->search->regex);
+    }
+
+    public function testJsonSerializable()
+    {
+        $expected = json_encode([
+            'start'   => 20,
+            'length'  => 10,
+            'search'  => ['value' => 'symfony', 'regex' => true],
+            'order'   => [
+                ['column' => 1, 'dir' => 'desc'],
+                ['column' => 0, 'dir' => 'asc'],
+            ],
+            'columns' => [
+                ['data' => '0', 'name' => '#1', 'searchable' => true, 'orderable' => false, 'search' => ['value' => 'first', 'regex' => false]],
+                ['data' => '1', 'name' => '#2', 'searchable' => false, 'orderable' => true, 'search' => ['value' => 'second', 'regex' => true]],
+            ],
+        ]);
+
+        $query = new DataTableQuery($this->parameters);
+
+        self::assertEquals($expected, json_encode($query));
     }
 }
