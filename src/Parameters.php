@@ -55,7 +55,7 @@ class Parameters
      *             @Assert\Length(max = "100")
      *         },
      *         "regex" = {
-     *             @Assert\Choice(choices = {"false", "true"})
+     *             @Assert\Choice(choices = {"false", "true"}, strict=true)
      *         }
      *     },
      *     allowExtraFields   = false,
@@ -74,7 +74,7 @@ class Parameters
      *                 @Assert\GreaterThanOrEqual(value = "0")
      *             },
      *             "dir" = {
-     *                 @Assert\Choice(choices = {"asc", "desc"})
+     *                 @Assert\Choice(choices = {"asc", "desc"}, strict=true)
      *             }
      *         },
      *         allowExtraFields   = false,
@@ -97,10 +97,10 @@ class Parameters
      *                 @Assert\Length(max = "100")
      *             },
      *             "searchable" = {
-     *                 @Assert\Choice(choices = {"false", "true"})
+     *                 @Assert\Choice(choices = {"false", "true"}, strict=true)
      *             },
      *             "orderable" = {
-     *                 @Assert\Choice(choices = {"false", "true"})
+     *                 @Assert\Choice(choices = {"false", "true"}, strict=true)
      *             },
      *             "search" = {
      *                 @Assert\Collection(
@@ -109,7 +109,7 @@ class Parameters
      *                             @Assert\Length(max = "100")
      *                         },
      *                         "regex" = {
-     *                             @Assert\Choice(choices = {"false", "true"})
+     *                             @Assert\Choice(choices = {"false", "true"}, strict=true)
      *                         }
      *                     },
      *                     allowExtraFields   = false,
