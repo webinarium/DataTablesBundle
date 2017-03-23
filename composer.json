@@ -1,9 +1,9 @@
 {
-    "name": "arodygin/datatables-bundle",
+    "name": "webinarium/datatables-bundle",
     "description": "DataTables Symfony bundle",
     "type": "library",
     "keywords": ["datatable", "datatables"],
-    "homepage": "https://github.com/arodygin/DataTablesBundle",
+    "homepage": "https://github.com/webinarium/DataTablesBundle",
     "license": "MIT",
     "require": {
         "php"                          : ">=7.0",
@@ -19,9 +19,6 @@
         "doctrine/annotations"         : "^1.3",
         "doctrine/cache"               : "^1.6",
         "friendsofphp/php-cs-fixer"    : "^1.13"
-    },
-    "replace": {
-        "etraxis/datatables-bundle": "*"
     },
     "autoload": {
         "psr-4": {

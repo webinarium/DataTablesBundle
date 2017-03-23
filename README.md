@@ -1,10 +1,9 @@
-[![License](https://poser.pugx.org/arodygin/datatables-bundle/license)](https://packagist.org/packages/arodygin/datatables-bundle)
 [![PHP](https://img.shields.io/badge/PHP-7.0%2B-blue.svg)](https://secure.php.net/migration70)
-[![Latest Stable Version](https://poser.pugx.org/arodygin/datatables-bundle/v/stable)](https://packagist.org/packages/arodygin/datatables-bundle)
-[![Build Status](https://travis-ci.org/arodygin/DataTablesBundle.svg?branch=master)](https://travis-ci.org/arodygin/DataTablesBundle)
-[![Code Coverage](https://scrutinizer-ci.com/g/arodygin/DataTablesBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/arodygin/DataTablesBundle/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/arodygin/DataTablesBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/arodygin/DataTablesBundle/?branch=master)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/7eb4fffa-bcab-4252-b4f6-3bb069f2ba73.svg)](https://insight.sensiolabs.com/projects/7eb4fffa-bcab-4252-b4f6-3bb069f2ba73)
+[![Latest Stable Version](https://poser.pugx.org/webinarium/datatables-bundle/v/stable)](https://packagist.org/packages/webinarium/datatables-bundle)
+[![Build Status](https://travis-ci.org/webinarium/DataTablesBundle.svg?branch=master)](https://travis-ci.org/webinarium/DataTablesBundle)
+[![Code Coverage](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/a53d13b5-1a56-4eb1-b724-3635bbfaa85d/mini.png)](https://insight.sensiolabs.com/projects/a53d13b5-1a56-4eb1-b724-3635bbfaa85d)
 
 # DataTables Symfony bundle
 
@@ -21,7 +20,7 @@ Symfony must be of 2.8 or above.
 The recommended way to install is via Composer:
 
 ```bash
-composer require "arodygin/datatables-bundle"
+composer require "webinarium/datatables-bundle"
 ```
 
 Then, add the following line in the `app/AppKernel.php` file to enable this bundle:
