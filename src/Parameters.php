@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015-2016 Artem Rodygin
+//  Copyright (C) 2015-2017 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -91,7 +91,7 @@ class Parameters
      *     @Assert\Collection(
      *         fields = {
      *             "data" = {
-     *                 @Assert\GreaterThanOrEqual(value = "0")
+     *                 @Assert\Regex("/^\d*$/")
      *             },
      *             "name" = {
      *                 @Assert\Length(max = "100")
