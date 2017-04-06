@@ -2,4 +2,4 @@ services:
 
     datatables:
         class: DataTables\DataTables
-        arguments: [ "@logger", "@validator" ]
+        arguments: [ '@logger', '@validator' ]
