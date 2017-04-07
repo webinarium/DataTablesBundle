@@ -12,7 +12,7 @@
 namespace DataTables;
 
 /**
- * @property-read   mixed $property
+ * @property mixed $property
  */
 class MyTestClass extends ValueObject
 {

@@ -20,105 +20,105 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property    int   $draw    Draw counter.
- * @property    int   $start   Index of first row to return, zero-based.
- * @property    int   $length  Total number of rows to return (-1 to return all rows).
- * @property    array $search  Global search value.
- * @property    array $order   Columns ordering (zero-based column index and direction).
- * @property    array $columns Columns information (searchable, orderable, search value, etc).
+ * @property int   $draw    Draw counter.
+ * @property int   $start   Index of first row to return, zero-based.
+ * @property int   $length  Total number of rows to return (-1 to return all rows).
+ * @property array $search  Global search value.
+ * @property array $order   Columns ordering (zero-based column index and direction).
+ * @property array $columns Columns information (searchable, orderable, search value, etc).
  */
 class Parameters
 {
     /**
-     * @Assert\NotNull()
-     * @Assert\GreaterThanOrEqual(value = "0")
+     * @Assert\NotNull
+     * @Assert\GreaterThanOrEqual(value="0")
      */
     public $draw = 0;
 
     /**
-     * @Assert\NotNull()
-     * @Assert\GreaterThanOrEqual(value = "0")
+     * @Assert\NotNull
+     * @Assert\GreaterThanOrEqual(value="0")
      */
     public $start = 0;
 
     /**
-     * @Assert\NotNull()
-     * @Assert\GreaterThanOrEqual(value = "-1")
+     * @Assert\NotNull
+     * @Assert\GreaterThanOrEqual(value="-1")
      */
     public $length = -1;
 
     /**
-     * @Assert\NotNull()
+     * @Assert\NotNull
      * @Assert\Collection(
-     *     fields = {
+     *     fields={
      *         "value" = {
-     *             @Assert\Length(max = "100")
+     *             @Assert\Length(max="100")
      *         },
      *         "regex" = {
-     *             @Assert\Choice(choices = {"false", "true"}, strict=true)
+     *             @Assert\Choice(choices={"false", "true"}, strict=true)
      *         }
      *     },
-     *     allowExtraFields   = false,
-     *     allowMissingFields = false
+     *     allowExtraFields=false,
+     *     allowMissingFields=false
      * )
      */
     public $search = [];
 
     /**
-     * @Assert\NotNull()
-     * @Assert\Type(type = "array")
+     * @Assert\NotNull
+     * @Assert\Type(type="array")
      * @Assert\All({
      *     @Assert\Collection(
-     *         fields = {
+     *         fields={
      *             "column" = {
-     *                 @Assert\GreaterThanOrEqual(value = "0")
+     *                 @Assert\GreaterThanOrEqual(value="0")
      *             },
      *             "dir" = {
-     *                 @Assert\Choice(choices = {"asc", "desc"}, strict=true)
+     *                 @Assert\Choice(choices={"asc", "desc"}, strict=true)
      *             }
      *         },
-     *         allowExtraFields   = false,
-     *         allowMissingFields = false
+     *         allowExtraFields=false,
+     *         allowMissingFields=false
      *     )
      * })
      */
     public $order = [];
 
     /**
-     * @Assert\NotNull()
-     * @Assert\Type(type = "array")
+     * @Assert\NotNull
+     * @Assert\Type(type="array")
      * @Assert\All({
      *     @Assert\Collection(
-     *         fields = {
+     *         fields={
      *             "data" = {
      *                 @Assert\Regex("/^\d*$/")
      *             },
      *             "name" = {
-     *                 @Assert\Length(max = "100")
+     *                 @Assert\Length(max="100")
      *             },
      *             "searchable" = {
-     *                 @Assert\Choice(choices = {"false", "true"}, strict=true)
+     *                 @Assert\Choice(choices={"false", "true"}, strict=true)
      *             },
      *             "orderable" = {
-     *                 @Assert\Choice(choices = {"false", "true"}, strict=true)
+     *                 @Assert\Choice(choices={"false", "true"}, strict=true)
      *             },
      *             "search" = {
      *                 @Assert\Collection(
-     *                     fields = {
+     *                     fields={
      *                         "value" = {
-     *                             @Assert\Length(max = "100")
+     *                             @Assert\Length(max="100")
      *                         },
      *                         "regex" = {
-     *                             @Assert\Choice(choices = {"false", "true"}, strict=true)
+     *                             @Assert\Choice(choices={"false", "true"}, strict=true)
      *                         }
      *                     },
-     *                     allowExtraFields   = false,
-     *                     allowMissingFields = false
+     *                     allowExtraFields=false,
+     *                     allowMissingFields=false
      *                 )
      *             }
      *         },
-     *         allowExtraFields   = false,
-     *         allowMissingFields = false
+     *         allowExtraFields=false,
+     *         allowMissingFields=false
      *     )
      * })
      */

@@ -20,9 +20,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property    int   $recordsTotal    Total records, before filtering.
- * @property    int   $recordsFiltered Total records, after filtering.
- * @property    array $data            The data to be displayed in the table.
+ * @property int   $recordsTotal    Total records, before filtering.
+ * @property int   $recordsFiltered Total records, after filtering.
+ * @property array $data            The data to be displayed in the table.
  */
 class DataTableResults implements \JsonSerializable
 {
@@ -32,33 +32,33 @@ class DataTableResults implements \JsonSerializable
     const DT_ROW_ATTR  = 'DT_RowAttr';
 
     /**
-     * @Assert\NotNull()
-     * @Assert\GreaterThanOrEqual(value = "0")
+     * @Assert\NotNull
+     * @Assert\GreaterThanOrEqual(value="0")
      */
     public $recordsTotal = 0;
 
     /**
-     * @Assert\NotNull()
-     * @Assert\GreaterThanOrEqual(value = "0")
+     * @Assert\NotNull
+     * @Assert\GreaterThanOrEqual(value="0")
      */
     public $recordsFiltered = 0;
 
     /**
-     * @Assert\NotNull()
-     * @Assert\Type(type = "array")
+     * @Assert\NotNull
+     * @Assert\Type(type="array")
      */
     public $data = [];
 
     /**
-     * @Assert\NotNull()
-     * @Assert\GreaterThanOrEqual(value = "0")
+     * @Assert\NotNull
+     * @Assert\GreaterThanOrEqual(value="0")
      */
     private $draw = 0;
 
     /**
      * Convert results into array as expected by DataTables plugin.
      *
-     * @return  array
+     * @return array
      */
     public function jsonSerialize()
     {

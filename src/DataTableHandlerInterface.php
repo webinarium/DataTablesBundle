@@ -21,11 +21,11 @@ interface DataTableHandlerInterface
     /**
      * Handles specified DataTable request.
      *
-     * @param   DataTableQuery $request
+     * @param DataTableQuery $request
      *
-     * @return  DataTableResults
+     * @throws DataTableException
      *
-     * @throws  DataTableException
+     * @return DataTableResults
      */
     public function handle(DataTableQuery $request): DataTableResults;
 }

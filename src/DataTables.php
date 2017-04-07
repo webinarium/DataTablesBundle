@@ -31,8 +31,8 @@ class DataTables implements DataTablesInterface
     /**
      * Dependency Injection constructor.
      *
-     * @param   LoggerInterface    $logger
-     * @param   ValidatorInterface $validator
+     * @param LoggerInterface    $logger
+     * @param ValidatorInterface $validator
      */
     public function __construct(LoggerInterface $logger, ValidatorInterface $validator)
     {
@@ -43,8 +43,8 @@ class DataTables implements DataTablesInterface
     /**
      * Registers specified DataTable handler.
      *
-     * @param   string                    $id      DataTable ID.
-     * @param   DataTableHandlerInterface $service Service of the DataTable handler.
+     * @param string                    $id      DataTable ID.
+     * @param DataTableHandlerInterface $service Service of the DataTable handler.
      */
     public function addService(string $id, DataTableHandlerInterface $service)
     {

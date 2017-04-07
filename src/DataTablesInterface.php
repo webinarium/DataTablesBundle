@@ -23,12 +23,12 @@ interface DataTablesInterface
     /**
      * Handles specified DataTable request.
      *
-     * @param   Request $request Original request.
-     * @param   string  $id      DataTable ID.
+     * @param Request $request Original request.
+     * @param string  $id      DataTable ID.
      *
-     * @return  DataTableResults Object with data to return in JSON response.
+     * @throws DataTableException
      *
-     * @throws  DataTableException
+     * @return DataTableResults Object with data to return in JSON response.
      */
     public function handle(Request $request, string $id): DataTableResults;
 }

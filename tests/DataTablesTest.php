@@ -32,7 +32,7 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
             ->enableAnnotationMapping()
             ->getValidator();
 
-        $container->set('logger',    $logger);
+        $container->set('logger', $logger);
         $container->set('validator', $validator);
 
         self::assertFalse($container->has('datatables'));
@@ -47,9 +47,9 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
 
         $this->datatables = $container->get('datatables');
 
-        $this->datatables->addService('testSuccess',   new Handler\SuccessfulTestDataTable());
+        $this->datatables->addService('testSuccess', new Handler\SuccessfulTestDataTable());
         $this->datatables->addService('testException', new Handler\ExceptionTestDataTable());
-        $this->datatables->addService('testInvalid',   new Handler\InvalidResultsTestDataTable());
+        $this->datatables->addService('testInvalid', new Handler\InvalidResultsTestDataTable());
     }
 
     public function testSuccess()
