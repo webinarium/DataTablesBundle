@@ -50,4 +50,4 @@ public function registerBundles()
 
 ## Usage
 
-Please see the complete usage example [here](../../wiki/Example).
+Please see the complete usage example [here](../../wiki).
