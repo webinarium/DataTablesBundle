@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015-2016 Artem Rodygin
+//  Copyright (C) 2015-2017 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -62,12 +62,12 @@ class DataTables implements DataTablesInterface
         $params = new Parameters();
 
         $keyParams = [
-            'draw' => 1,
-            'start' => 1,
-            'length' => 1,
-            'search' => 1,
-            'order' => 1,
-            'columns' => 1,
+            'draw',
+            'start',
+            'length',
+            'search',
+            'order',
+            'columns',
         ];
 
         $params->draw       = $request->get('draw');
@@ -76,7 +76,7 @@ class DataTables implements DataTablesInterface
         $params->search     = $request->get('search');
         $params->order      = $request->get('order');
         $params->columns    = $request->get('columns');
-        $params->customData = array_diff_key($request->query->all(), $keyParams);
+        $params->customData = array_diff_key($request->query->all(), array_flip($keyParams));
 
         // Validate sent parameters.
         $violations = $this->validator->validate($params);

@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015-2016 Artem Rodygin
+//  Copyright (C) 2015-2017 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -18,11 +18,12 @@ namespace DataTables;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property int      $start   Index of first row to return, zero-based.
- * @property int      $length  Total number of rows to return (-1 to return all rows).
- * @property Search   $search  Global search value.
- * @property Order[]  $order   Columns ordering (zero-based column index and direction).
- * @property Column[] $columns Columns information (searchable, orderable, search value, etc).
+ * @property int      $start      Index of first row to return, zero-based.
+ * @property int      $length     Total number of rows to return (-1 to return all rows).
+ * @property Search   $search     Global search value.
+ * @property Order[]  $order      Columns ordering (zero-based column index and direction).
+ * @property Column[] $columns    Columns information (searchable, orderable, search value, etc).
+ * @property array    $customData Custom data from DataTables.
  */
 class DataTableQuery extends ValueObject implements \JsonSerializable
 {
