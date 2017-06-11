@@ -61,12 +61,22 @@ class DataTables implements DataTablesInterface
         // Retrieve sent parameters.
         $params = new Parameters();
 
-        $params->draw    = $request->get('draw');
-        $params->start   = $request->get('start');
-        $params->length  = $request->get('length');
-        $params->search  = $request->get('search');
-        $params->order   = $request->get('order');
-        $params->columns = $request->get('columns');
+        $keyParams = [
+            'draw' => 1,
+            'start' => 1,
+            'length' => 1,
+            'search' => 1,
+            'order' => 1,
+            'columns' => 1,
+        ];
+
+        $params->draw       = $request->get('draw');
+        $params->start      = $request->get('start');
+        $params->length     = $request->get('length');
+        $params->search     = $request->get('search');
+        $params->order      = $request->get('order');
+        $params->columns    = $request->get('columns');
+        $params->customData = array_diff_key($request->query->all(), $keyParams);
 
         // Validate sent parameters.
         $violations = $this->validator->validate($params);

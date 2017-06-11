@@ -26,6 +26,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @property array $search  Global search value.
  * @property array $order   Columns ordering (zero-based column index and direction).
  * @property array $columns Columns information (searchable, orderable, search value, etc).
+ * @property array $customData Custom Data from dataTable
  */
 class Parameters
 {
@@ -123,4 +124,9 @@ class Parameters
      * })
      */
     public $columns = [];
+
+    /**
+     * @Assert\Type(type="array")
+     */
+    public $customData = [];
 }

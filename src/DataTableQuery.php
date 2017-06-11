@@ -31,6 +31,7 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
     protected $search;
     protected $order;
     protected $columns;
+    protected $customData;
 
     /**
      * Initializing constructor.
@@ -63,6 +64,8 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
                 new Search($column['search']['value'], (bool) $column['search']['regex'])
             );
         }, $params->columns);
+
+        $this->customData = $params->customData;
     }
 
     /**
