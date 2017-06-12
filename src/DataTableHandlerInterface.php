@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015 Artem Rodygin
+//  Copyright (C) 2015-2017 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -18,6 +18,8 @@ namespace DataTables;
  */
 interface DataTableHandlerInterface
 {
+    const ID = null;
+
     /**
      * Handles specified DataTable request.
      *

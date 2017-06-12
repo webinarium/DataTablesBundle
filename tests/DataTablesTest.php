@@ -47,10 +47,11 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
 
         $this->datatables = $container->get('datatables');
 
-        $this->datatables->addService('testSuccess', new Handler\SuccessfulTestDataTable());
-        $this->datatables->addService('testCustomData', new Handler\CustomDataTestDataTable());
-        $this->datatables->addService('testException', new Handler\ExceptionTestDataTable());
-        $this->datatables->addService('testInvalid', new Handler\InvalidResultsTestDataTable());
+        $this->datatables->addService(new Handler\SuccessfulTestDataTable(), 'testSuccess');
+        $this->datatables->addService(new Handler\AutoloadedTestDataTable());
+        $this->datatables->addService(new Handler\CustomDataTestDataTable(), 'testCustomData');
+        $this->datatables->addService(new Handler\ExceptionTestDataTable(), 'testException');
+        $this->datatables->addService(new Handler\InvalidResultsTestDataTable(), 'testInvalid');
     }
 
     public function testSuccess()
@@ -74,6 +75,31 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
         ];
 
         $results = $this->datatables->handle($request, 'testSuccess');
+
+        self::assertEquals(json_encode($expected), json_encode($results));
+    }
+
+    public function testAutoloaded()
+    {
+        $draw = mt_rand();
+
+        $request = new Request([
+            'draw'    => $draw,
+            'start'   => 0,
+            'length'  => 10,
+            'search'  => ['value' => null, 'regex' => 'false'],
+            'order'   => [],
+            'columns' => [],
+        ]);
+
+        $expected = [
+            'draw'            => $draw,
+            'recordsTotal'    => 200,
+            'recordsFiltered' => 20,
+            'data'            => [],
+        ];
+
+        $results = $this->datatables->handle($request, 'testAuto');
 
         self::assertEquals(json_encode($expected), json_encode($results));
     }

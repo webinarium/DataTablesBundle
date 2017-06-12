@@ -43,12 +43,16 @@ class DataTables implements DataTablesInterface
     /**
      * Registers specified DataTable handler.
      *
-     * @param string                    $id      DataTable ID.
      * @param DataTableHandlerInterface $service Service of the DataTable handler.
+     * @param string                    $id      DataTable ID.
      */
-    public function addService(string $id, DataTableHandlerInterface $service)
+    public function addService(DataTableHandlerInterface $service, string $id = null)
     {
-        $this->services[$id] = $service;
+        $service_id = $id ?? $service::ID;
+
+        if ($service_id !== null) {
+            $this->services[$service_id] = $service;
+        }
     }
 
     /**

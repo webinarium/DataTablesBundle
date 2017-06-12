@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015-2016 Artem Rodygin
+//  Copyright (C) 2015-2017 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -51,12 +51,10 @@ class DataTablesExtension extends Extension implements CompilerPassInterface
         /** @var array $tags */
         foreach ($services as $id => $tags) {
             foreach ($tags as $tag) {
-                if (array_key_exists('id', $tag)) {
-                    $definition->addMethodCall('addService', [
-                        $tag['id'],
-                        new Reference($id),
-                    ]);
-                }
+                $definition->addMethodCall('addService', [
+                    new Reference($id),
+                    $tag['id'] ?? null,
+                ]);
             }
         }
     }
