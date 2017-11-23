@@ -11,7 +11,9 @@
 
 namespace DataTables;
 
-class ValueObjectTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ValueObjectTest extends TestCase
 {
     public function testIsSet()
     {
@@ -31,11 +33,10 @@ class ValueObjectTest extends \PHPUnit_Framework_TestCase
         self::assertEquals($expected, $object->property);
     }
 
-    /**
-     * @expectedException \Exception
-     */
     public function testGetPropertyFailure()
     {
+        $this->expectException(\Exception::class);
+
         $object = new MyTestClass();
 
         /** @noinspection PhpUndefinedFieldInspection */

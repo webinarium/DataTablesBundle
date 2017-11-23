@@ -13,9 +13,10 @@
 
 namespace DataTables;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
-class DataTableQueryTest extends \PHPUnit_Framework_TestCase
+class DataTableQueryTest extends TestCase
 {
     /** @var Parameters */
     protected $parameters;

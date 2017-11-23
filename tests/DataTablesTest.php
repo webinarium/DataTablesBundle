@@ -13,12 +13,13 @@
 
 namespace DataTables;
 
+use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
-class DataTablesTest extends \PHPUnit_Framework_TestCase
+class DataTablesTest extends TestCase
 {
     /** @var \DataTables\DataTablesInterface */
     protected $datatables;
@@ -134,12 +135,11 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
         self::assertEquals(json_encode($expected), json_encode($results));
     }
 
-    /**
-     * @expectedException \DataTables\DataTableException
-     * @expectedExceptionMessage Something gone wrong.
-     */
     public function testException()
     {
+        $this->expectException(DataTableException::class);
+        $this->expectExceptionMessage('Something gone wrong.');
+
         $request = new Request([
             'draw'    => mt_rand(),
             'start'   => 0,
@@ -152,12 +152,11 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
         $this->datatables->handle($request, 'testException');
     }
 
-    /**
-     * @expectedException \DataTables\DataTableException
-     * @expectedExceptionMessage This value should not be null.
-     */
     public function testBadQuery()
     {
+        $this->expectException(DataTableException::class);
+        $this->expectExceptionMessage('This value should not be null.');
+
         $request = new Request([
             'start'   => 0,
             'length'  => 10,
@@ -169,12 +168,11 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
         $this->datatables->handle($request, 'testSuccess');
     }
 
-    /**
-     * @expectedException \DataTables\DataTableException
-     * @expectedExceptionMessage Unknown DataTable ID.
-     */
     public function testUnknownService()
     {
+        $this->expectException(DataTableException::class);
+        $this->expectExceptionMessage('Unknown DataTable ID.');
+
         $request = new Request([
             'draw'    => mt_rand(),
             'start'   => 0,
@@ -187,12 +185,11 @@ class DataTablesTest extends \PHPUnit_Framework_TestCase
         $this->datatables->handle($request, 'testUnknown');
     }
 
-    /**
-     * @expectedException \DataTables\DataTableException
-     * @expectedExceptionMessage This value should not be null.
-     */
     public function testInvalidResults()
     {
+        $this->expectException(DataTableException::class);
+        $this->expectExceptionMessage('This value should not be null.');
+
         $request = new Request([
             'draw'    => mt_rand(),
             'start'   => 0,

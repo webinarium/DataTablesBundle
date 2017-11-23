@@ -13,7 +13,9 @@
 
 namespace DataTables;
 
-class SearchTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class SearchTest extends TestCase
 {
     public function testConstructor()
     {

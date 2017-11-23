@@ -13,9 +13,10 @@
 
 namespace DataTables\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class DataTablesExtensionTest extends \PHPUnit_Framework_TestCase
+class DataTablesExtensionTest extends TestCase
 {
     public function testLoadServices()
     {
