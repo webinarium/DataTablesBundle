@@ -92,7 +92,6 @@ class Parameters
      *     @Assert\Collection(
      *         fields={
      *             "data" = {
-     *                 @Assert\Regex("/^\d*$/")
      *             },
      *             "name" = {
      *                 @Assert\Length(max="100")
