@@ -135,6 +135,38 @@ class DataTablesTest extends TestCase
         self::assertEquals(json_encode($expected), json_encode($results));
     }
 
+    public function testPost()
+    {
+        $draw = mt_rand();
+
+        $request = new Request([], [
+            'draw'      => $draw,
+            'firstName' => 'Anna',
+            'lastName'  => 'Rodygina',
+            'start'     => 0,
+            'length'    => 10,
+            'search'    => ['value' => null, 'regex' => 'false'],
+            'order'     => [],
+            'columns'   => [],
+        ]);
+
+        $request->setMethod(Request::METHOD_POST);
+
+        $expected = [
+            'draw'            => $draw,
+            'recordsTotal'    => 100,
+            'recordsFiltered' => 10,
+            'data'            => [
+                'firstName' => 'Anna',
+                'lastName'  => 'Rodygina',
+            ],
+        ];
+
+        $results = $this->datatables->handle($request, 'testCustomData');
+
+        self::assertEquals(json_encode($expected), json_encode($results));
+    }
+
     public function testException()
     {
         $this->expectException(DataTableException::class);
