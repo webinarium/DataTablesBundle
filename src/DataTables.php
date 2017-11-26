@@ -79,8 +79,13 @@ class DataTables implements DataTablesInterface
         $params->length     = $request->get('length');
         $params->search     = $request->get('search');
         $params->order      = $request->get('order');
-        $params->columns    = $request->get('columns');
-        $params->customData = array_diff_key($request->query->all(), array_flip($keyParams));
+        $params->columns = $request->get('columns');
+        if ($request->isMethod('POST')) {
+            $allParams = $request->request->all();
+        } else {
+            $allParams = $request->query->all();
+        }
+        $params->customData = array_diff_key($allParams, array_flip($keyParams));
 
         // Validate sent parameters.
         $violations = $this->validator->validate($params);
