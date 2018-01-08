@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/webinarium/DataTablesBundle.svg?branch=master)](https://travis-ci.org/webinarium/DataTablesBundle)
 [![Code Coverage](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/a53d13b5-1a56-4eb1-b724-3635bbfaa85d/mini.png)](https://insight.sensiolabs.com/projects/a53d13b5-1a56-4eb1-b724-3635bbfaa85d)
 
 # DataTables Symfony bundle
 
