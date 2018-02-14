@@ -3,3 +3,5 @@ services:
     datatables:
         class: DataTables\DataTables
         arguments: [ '@logger', '@validator' ]
+
+    DataTables\DataTablesInterface: '@datatables'

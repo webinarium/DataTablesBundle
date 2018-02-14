@@ -28,7 +28,7 @@ This command requires you to have Composer installed globally, as explained in t
 
 ### Step 2: Enable the Bundle
 
-Then, enable the bundle by adding it to the list of registered bundles in the `app/AppKernel.php` file of your project:
+If you are using Symfony 3 or below, enable the bundle by adding it to the list of registered bundles in the `app/AppKernel.php` file of your project:
 
 ```php
 public function registerBundles()
