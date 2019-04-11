@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Validation;
  */
 class DataTablesTest extends TestCase
 {
-    /** @var \DataTables\DataTablesInterface */
+    /** @var DataTablesInterface */
     protected $datatables;
 
     protected function setUp()

@@ -7,6 +7,7 @@
     "license": "MIT",
     "require": {
         "php"                          : ">=7.0",
+        "ext-json"                     : "*",
         "psr/log"                      : "^1.1",
         "symfony/config"               : "^2.7|^3.0|^4.0",
         "symfony/dependency-injection" : "^2.7|^3.0|^4.0",

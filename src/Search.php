@@ -29,8 +29,8 @@ class Search extends ValueObject implements \JsonSerializable
     /**
      * Initializing constructor.
      *
-     * @param string $value
-     * @param bool   $regex
+     * @param null|string $value
+     * @param bool        $regex
      */
     public function __construct(string $value = null, bool $regex = false)
     {
