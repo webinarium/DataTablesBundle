@@ -27,16 +27,16 @@ class DataTableQueryTest extends TestCase
 
         $request = new Request([
             'draw'    => mt_rand(),
-            'start'   => 20,
-            'length'  => 10,
-            'search'  => ['value' => 'symfony', 'regex' => true],
+            'start'   => '20',
+            'length'  => '10',
+            'search'  => ['value' => 'symfony', 'regex' => 'false'],
             'order'   => [
-                ['column' => 1, 'dir' => 'desc'],
-                ['column' => 0, 'dir' => 'asc'],
+                ['column' => '1', 'dir' => 'desc'],
+                ['column' => '0', 'dir' => 'asc'],
             ],
             'columns' => [
-                ['data' => 0, 'name' => '#1', 'searchable' => true, 'orderable' => false, 'search' => ['value' => 'first', 'regex' => false]],
-                ['data' => 1, 'name' => '#2', 'searchable' => false, 'orderable' => true, 'search' => ['value' => 'second', 'regex' => true]],
+                ['data' => '0', 'name' => '#1', 'searchable' => 'true', 'orderable' => 'false', 'search' => ['value' => 'first', 'regex' => 'false']],
+                ['data' => '1', 'name' => '#2', 'searchable' => 'false', 'orderable' => 'true', 'search' => ['value' => 'second', 'regex' => 'true']],
             ],
         ]);
 
@@ -58,7 +58,7 @@ class DataTableQueryTest extends TestCase
         self::assertEquals(10, $query->length);
 
         self::assertEquals('symfony', $query->search->value);
-        self::assertTrue($query->search->regex);
+        self::assertFalse($query->search->regex);
 
         self::assertCount(2, $query->order);
         self::assertEquals(1, $query->order[0]->column);
@@ -86,7 +86,7 @@ class DataTableQueryTest extends TestCase
         $expected = json_encode([
             'start'   => 20,
             'length'  => 10,
-            'search'  => ['value' => 'symfony', 'regex' => true],
+            'search'  => ['value' => 'symfony', 'regex' => false],
             'order'   => [
                 ['column' => 1, 'dir' => 'desc'],
                 ['column' => 0, 'dir' => 'asc'],

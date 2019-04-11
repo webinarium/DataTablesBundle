@@ -46,7 +46,7 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
 
         $this->search = new Search(
             $params->search['value'],
-            (bool) $params->search['regex']
+            $params->search['regex'] === 'true'
         );
 
         $this->order = array_map(function (array $order) {
@@ -60,9 +60,9 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
             return new Column(
                 $column['data'],
                 $column['name'],
-                (bool) $column['searchable'],
-                (bool) $column['orderable'],
-                new Search($column['search']['value'], (bool) $column['search']['regex'])
+                $column['searchable'] === 'true',
+                $column['orderable'] === 'true',
+                new Search($column['search']['value'], $column['search']['regex'] === 'true')
             );
         }, $params->columns);
 
