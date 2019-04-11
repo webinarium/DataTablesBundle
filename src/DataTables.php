@@ -29,7 +29,7 @@ class DataTables implements DataTablesInterface
     protected $services = [];
 
     /**
-     * Dependency Injection constructor.
+     * @codeCoverageIgnore Dependency Injection constructor.
      *
      * @param LoggerInterface    $logger
      * @param ValidatorInterface $validator

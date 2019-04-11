@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2016 Artem Rodygin
+//  Copyright (C) 2019 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
@@ -16,38 +16,27 @@ namespace DataTables;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass \DataTables\Search
+ * @coversDefaultClass \DataTables\DataTableResults
  */
-class SearchTest extends TestCase
+class DataTableResultsTest extends TestCase
 {
-    /**
-     * @covers ::__construct
-     */
-    public function testConstructor()
-    {
-        $value = bin2hex(random_bytes(10));
-        $regex = true;
-
-        $object = new Search($value, $regex);
-
-        self::assertSame($value, $object->value);
-        self::assertSame($regex, $object->regex);
-    }
-
     /**
      * @covers ::jsonSerialize
      */
     public function testJsonSerializable()
     {
-        $value = bin2hex(random_bytes(10));
-        $regex = true;
-
         $expected = json_encode([
-            'value' => $value,
-            'regex' => $regex,
+            'draw'            => 0,
+            'recordsTotal'    => 100,
+            'recordsFiltered' => 78,
+            'data'            => [],
         ]);
 
-        $object = new Search($value, $regex);
+        $object = new DataTableResults();
+
+        $object->recordsTotal    = 100;
+        $object->recordsFiltered = 78;
+        $object->data            = [];
 
         self::assertSame($expected, json_encode($object));
     }

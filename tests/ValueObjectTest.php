@@ -13,8 +13,14 @@ namespace DataTables;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @coversDefaultClass \DataTables\ValueObject
+ */
 class ValueObjectTest extends TestCase
 {
+    /**
+     * @covers ::__isset
+     */
     public function testIsSet()
     {
         $object = new MyTestClass();
@@ -23,6 +29,9 @@ class ValueObjectTest extends TestCase
         self::assertFalse(isset($object->unknown));
     }
 
+    /**
+     * @covers ::__get
+     */
     public function testGetPropertySuccess()
     {
         $object   = new MyTestClass();
@@ -33,6 +42,9 @@ class ValueObjectTest extends TestCase
         self::assertSame($expected, $object->property);
     }
 
+    /**
+     * @covers ::__get
+     */
     public function testGetPropertyFailure()
     {
         $this->expectException(\Exception::class);
@@ -41,5 +53,22 @@ class ValueObjectTest extends TestCase
 
         /** @noinspection PhpUndefinedFieldInspection */
         echo $object->unknown;
+    }
+
+    /**
+     * @covers ::__set
+     */
+    public function testSetProperty()
+    {
+        $object   = new MyTestClass();
+        $expected = mt_rand();
+        $ignored  = mt_rand();
+
+        self::assertNotSame($expected, $ignored);
+
+        $object->setProperty($expected);
+        $object->property = $ignored;
+
+        self::assertSame($expected, $object->property);
     }
 }

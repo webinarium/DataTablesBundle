@@ -19,6 +19,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
+/**
+ * @coversDefaultClass \DataTables\DataTables
+ */
 class DataTablesTest extends TestCase
 {
     /** @var \DataTables\DataTablesInterface */
@@ -55,6 +58,9 @@ class DataTablesTest extends TestCase
         $this->datatables->addService(new Handler\InvalidResultsTestDataTable(), 'testInvalid');
     }
 
+    /**
+     * @covers ::handle
+     */
     public function testSuccess()
     {
         $draw = mt_rand();
@@ -80,6 +86,9 @@ class DataTablesTest extends TestCase
         self::assertSame(json_encode($expected), json_encode($results));
     }
 
+    /**
+     * @covers ::handle
+     */
     public function testAutoloaded()
     {
         $draw = mt_rand();
@@ -105,6 +114,9 @@ class DataTablesTest extends TestCase
         self::assertSame(json_encode($expected), json_encode($results));
     }
 
+    /**
+     * @covers ::handle
+     */
     public function testCustomData()
     {
         $draw = mt_rand();
@@ -135,6 +147,9 @@ class DataTablesTest extends TestCase
         self::assertSame(json_encode($expected), json_encode($results));
     }
 
+    /**
+     * @covers ::handle
+     */
     public function testPost()
     {
         $draw = mt_rand();
@@ -167,6 +182,9 @@ class DataTablesTest extends TestCase
         self::assertSame(json_encode($expected), json_encode($results));
     }
 
+    /**
+     * @covers ::handle
+     */
     public function testException()
     {
         $this->expectException(DataTableException::class);
@@ -184,6 +202,9 @@ class DataTablesTest extends TestCase
         $this->datatables->handle($request, 'testException');
     }
 
+    /**
+     * @covers ::handle
+     */
     public function testBadQuery()
     {
         $this->expectException(DataTableException::class);
@@ -200,6 +221,9 @@ class DataTablesTest extends TestCase
         $this->datatables->handle($request, 'testSuccess');
     }
 
+    /**
+     * @covers ::handle
+     */
     public function testUnknownService()
     {
         $this->expectException(DataTableException::class);
@@ -217,6 +241,9 @@ class DataTablesTest extends TestCase
         $this->datatables->handle($request, 'testUnknown');
     }
 
+    /**
+     * @covers ::handle
+     */
     public function testInvalidResults()
     {
         $this->expectException(DataTableException::class);

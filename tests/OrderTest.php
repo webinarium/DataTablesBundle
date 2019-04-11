@@ -15,8 +15,14 @@ namespace DataTables;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @coversDefaultClass \DataTables\Order
+ */
 class OrderTest extends TestCase
 {
+    /**
+     * @covers ::__construct
+     */
     public function testConstructor()
     {
         $column = random_int(1, 10);
@@ -28,6 +34,9 @@ class OrderTest extends TestCase
         self::assertSame($dir, $object->dir);
     }
 
+    /**
+     * @covers ::jsonSerialize
+     */
     public function testJsonSerializable()
     {
         $column = random_int(1, 10);

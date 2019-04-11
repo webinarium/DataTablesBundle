@@ -16,6 +16,9 @@ namespace DataTables;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @coversDefaultClass \DataTables\DataTableQuery
+ */
 class DataTableQueryTest extends TestCase
 {
     /** @var Parameters */
@@ -50,6 +53,9 @@ class DataTableQueryTest extends TestCase
         $this->parameters->columns = $request->get('columns');
     }
 
+    /**
+     * @covers ::__construct
+     */
     public function testSuccess()
     {
         $query = new DataTableQuery($this->parameters);
@@ -81,6 +87,9 @@ class DataTableQueryTest extends TestCase
         self::assertTrue($query->columns[1]->search->regex);
     }
 
+    /**
+     * @covers ::jsonSerialize
+     */
     public function testJsonSerializable()
     {
         $expected = json_encode([

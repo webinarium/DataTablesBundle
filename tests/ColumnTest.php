@@ -15,8 +15,14 @@ namespace DataTables;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @coversDefaultClass \DataTables\Column
+ */
 class ColumnTest extends TestCase
 {
+    /**
+     * @covers ::__construct
+     */
     public function testConstructor()
     {
         $data       = bin2hex(random_bytes(10));
@@ -36,6 +42,9 @@ class ColumnTest extends TestCase
         self::assertSame($regex, $object->search->regex);
     }
 
+    /**
+     * @covers ::jsonSerialize
+     */
     public function testJsonSerializable()
     {
         $data       = bin2hex(random_bytes(10));
