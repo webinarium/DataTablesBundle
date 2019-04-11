@@ -2,7 +2,7 @@
 
 //----------------------------------------------------------------------
 //
-//  Copyright (C) 2015-2017 Artem Rodygin
+//  Copyright (C) 2015-2019 Artem Rodygin
 //
 //  This file is part of DataTables Symfony bundle.
 //
