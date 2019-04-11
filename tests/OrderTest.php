@@ -24,8 +24,8 @@ class OrderTest extends TestCase
 
         $object = new Order($column, $dir);
 
-        self::assertEquals($column, $object->column);
-        self::assertEquals($dir, $object->dir);
+        self::assertSame($column, $object->column);
+        self::assertSame($dir, $object->dir);
     }
 
     public function testJsonSerializable()
@@ -40,6 +40,6 @@ class OrderTest extends TestCase
 
         $object = new Order($column, $dir);
 
-        self::assertEquals($expected, json_encode($object));
+        self::assertSame($expected, json_encode($object));
     }
 }

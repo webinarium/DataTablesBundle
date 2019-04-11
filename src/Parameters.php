@@ -52,10 +52,10 @@ class Parameters
      * @Assert\NotNull
      * @Assert\Collection(
      *     fields={
-     *         "value" = {
+     *         "value": {
      *             @Assert\Length(max="100")
      *         },
-     *         "regex" = {
+     *         "regex": {
      *             @Assert\Choice(choices={"false", "true"}, strict=true)
      *         }
      *     },
@@ -71,10 +71,10 @@ class Parameters
      * @Assert\All({
      *     @Assert\Collection(
      *         fields={
-     *             "column" = {
+     *             "column": {
      *                 @Assert\GreaterThanOrEqual(value="0")
      *             },
-     *             "dir" = {
+     *             "dir": {
      *                 @Assert\Choice(choices={"asc", "desc"}, strict=true)
      *             }
      *         },
@@ -91,24 +91,24 @@ class Parameters
      * @Assert\All({
      *     @Assert\Collection(
      *         fields={
-     *             "data" = {
+     *             "data": {
      *             },
-     *             "name" = {
+     *             "name": {
      *                 @Assert\Length(max="100")
      *             },
-     *             "searchable" = {
+     *             "searchable": {
      *                 @Assert\Choice(choices={"false", "true"}, strict=true)
      *             },
-     *             "orderable" = {
+     *             "orderable": {
      *                 @Assert\Choice(choices={"false", "true"}, strict=true)
      *             },
-     *             "search" = {
+     *             "search": {
      *                 @Assert\Collection(
      *                     fields={
-     *                         "value" = {
+     *                         "value": {
      *                             @Assert\Length(max="100")
      *                         },
-     *                         "regex" = {
+     *                         "regex": {
      *                             @Assert\Choice(choices={"false", "true"}, strict=true)
      *                         }
      *                     },

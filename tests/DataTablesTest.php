@@ -77,7 +77,7 @@ class DataTablesTest extends TestCase
 
         $results = $this->datatables->handle($request, 'testSuccess');
 
-        self::assertEquals(json_encode($expected), json_encode($results));
+        self::assertSame(json_encode($expected), json_encode($results));
     }
 
     public function testAutoloaded()
@@ -102,7 +102,7 @@ class DataTablesTest extends TestCase
 
         $results = $this->datatables->handle($request, 'testAuto');
 
-        self::assertEquals(json_encode($expected), json_encode($results));
+        self::assertSame(json_encode($expected), json_encode($results));
     }
 
     public function testCustomData()
@@ -132,7 +132,7 @@ class DataTablesTest extends TestCase
 
         $results = $this->datatables->handle($request, 'testCustomData');
 
-        self::assertEquals(json_encode($expected), json_encode($results));
+        self::assertSame(json_encode($expected), json_encode($results));
     }
 
     public function testPost()
@@ -164,7 +164,7 @@ class DataTablesTest extends TestCase
 
         $results = $this->datatables->handle($request, 'testCustomData');
 
-        self::assertEquals(json_encode($expected), json_encode($results));
+        self::assertSame(json_encode($expected), json_encode($results));
     }
 
     public function testException()

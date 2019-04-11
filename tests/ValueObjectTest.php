@@ -30,7 +30,7 @@ class ValueObjectTest extends TestCase
 
         $object->setProperty($expected);
 
-        self::assertEquals($expected, $object->property);
+        self::assertSame($expected, $object->property);
     }
 
     public function testGetPropertyFailure()

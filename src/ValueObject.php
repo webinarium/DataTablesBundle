@@ -45,7 +45,7 @@ class ValueObject
             throw new \BadMethodCallException(sprintf('Unknown property "%s" in class "%s".', $name, get_class($this)));
         }
 
-        return $this->$name;
+        return $this->{$name};
     }
 
     /**

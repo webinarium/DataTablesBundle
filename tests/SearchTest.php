@@ -24,8 +24,8 @@ class SearchTest extends TestCase
 
         $object = new Search($value, $regex);
 
-        self::assertEquals($value, $object->value);
-        self::assertEquals($regex, $object->regex);
+        self::assertSame($value, $object->value);
+        self::assertSame($regex, $object->regex);
     }
 
     public function testJsonSerializable()
@@ -40,6 +40,6 @@ class SearchTest extends TestCase
 
         $object = new Search($value, $regex);
 
-        self::assertEquals($expected, json_encode($object));
+        self::assertSame($expected, json_encode($object));
     }
 }

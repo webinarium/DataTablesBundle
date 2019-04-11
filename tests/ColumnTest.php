@@ -28,12 +28,12 @@ class ColumnTest extends TestCase
 
         $object = new Column($data, $name, $searchable, $orderable, new Search($value, $regex));
 
-        self::assertEquals($data, $object->data);
-        self::assertEquals($name, $object->name);
-        self::assertEquals($searchable, $object->searchable);
-        self::assertEquals($orderable, $object->orderable);
-        self::assertEquals($value, $object->search->value);
-        self::assertEquals($regex, $object->search->regex);
+        self::assertSame($data, $object->data);
+        self::assertSame($name, $object->name);
+        self::assertSame($searchable, $object->searchable);
+        self::assertSame($orderable, $object->orderable);
+        self::assertSame($value, $object->search->value);
+        self::assertSame($regex, $object->search->regex);
     }
 
     public function testJsonSerializable()
@@ -58,6 +58,6 @@ class ColumnTest extends TestCase
 
         $object = new Column($data, $name, $searchable, $orderable, new Search($value, $regex));
 
-        self::assertEquals($expected, json_encode($object));
+        self::assertSame($expected, json_encode($object));
     }
 }
