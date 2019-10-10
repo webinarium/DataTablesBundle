@@ -78,8 +78,8 @@ class DataTables implements DataTablesInterface
         $params->start   = $request->get('start');
         $params->length  = $request->get('length');
         $params->search  = $request->get('search');
-        $params->order   = $request->get('order');
-        $params->columns = $request->get('columns');
+        $params->order   = $request->get('order')   ?? [];
+        $params->columns = $request->get('columns') ?? [];
 
         $allParams = $request->isMethod(Request::METHOD_POST)
             ? $request->request->all()

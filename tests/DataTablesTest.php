@@ -89,6 +89,34 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
+    public function testDefaults()
+    {
+        $draw = mt_rand();
+
+        $request = new Request([
+            'draw'    => $draw,
+            'start'   => 0,
+            'length'  => 10,
+            'search'  => ['value' => null, 'regex' => 'false'],
+            'order'   => null,
+            'columns' => null,
+        ]);
+
+        $expected = [
+            'draw'            => $draw,
+            'recordsTotal'    => 100,
+            'recordsFiltered' => 10,
+            'data'            => [],
+        ];
+
+        $results = $this->datatables->handle($request, 'testSuccess');
+
+        self::assertSame(json_encode($expected), json_encode($results));
+    }
+
+    /**
+     * @covers ::handle
+     */
     public function testAutoloaded()
     {
         $draw = mt_rand();
