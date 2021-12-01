@@ -71,6 +71,8 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
 
     /**
      * {@inheritdoc}
+     *
+     * @return array
      */
     public function jsonSerialize()
     {
