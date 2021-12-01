@@ -1,6 +1,6 @@
 [![PHP](https://img.shields.io/badge/PHP-7.0%2B-blue.svg)](https://secure.php.net/migration70)
 [![Latest Stable Version](https://poser.pugx.org/webinarium/datatables-bundle/v/stable)](https://packagist.org/packages/webinarium/datatables-bundle)
-[![Build Status](https://travis-ci.org/webinarium/DataTablesBundle.svg?branch=master)](https://travis-ci.org/webinarium/DataTablesBundle)
+[![Build Status](https://travis-ci.com/webinarium/DataTablesBundle.svg?branch=master)](https://travis-ci.com/github/webinarium/DataTablesBundle)
 [![Code Coverage](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/?branch=master)
 
@@ -44,7 +44,7 @@ public function registerBundles()
 
 ```console
 ./vendor/bin/php-cs-fixer fix
-./vendor/bin/phpunit --coverage-html=vendor/coverage
+XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html=vendor/coverage
 ```
 
 ## Usage
