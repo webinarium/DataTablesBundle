@@ -55,7 +55,7 @@ class Column extends ValueObject implements \JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'data'       => $this->data,

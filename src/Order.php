@@ -23,8 +23,8 @@ namespace DataTables;
  */
 class Order extends ValueObject implements \JsonSerializable
 {
-    const ASC  = 'asc';
-    const DESC = 'desc';
+    public const ASC  = 'asc';
+    public const DESC = 'desc';
 
     protected $column;
     protected $dir;
@@ -46,7 +46,7 @@ class Order extends ValueObject implements \JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'column' => $this->column,

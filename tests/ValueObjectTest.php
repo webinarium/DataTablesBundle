@@ -15,13 +15,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \DataTables\ValueObject
+ *
+ * @internal
  */
-class ValueObjectTest extends TestCase
+final class ValueObjectTest extends TestCase
 {
     /**
      * @covers ::__isset
      */
-    public function testIsSet()
+    public function testIsSet(): void
     {
         $object = new MyTestClass();
 
@@ -32,7 +34,7 @@ class ValueObjectTest extends TestCase
     /**
      * @covers ::__get
      */
-    public function testGetPropertySuccess()
+    public function testGetPropertySuccess(): void
     {
         $object   = new MyTestClass();
         $expected = mt_rand();
@@ -45,20 +47,19 @@ class ValueObjectTest extends TestCase
     /**
      * @covers ::__get
      */
-    public function testGetPropertyFailure()
+    public function testGetPropertyFailure(): void
     {
         $this->expectException(\Exception::class);
 
         $object = new MyTestClass();
 
-        /** @noinspection PhpUndefinedFieldInspection */
         echo $object->unknown;
     }
 
     /**
      * @covers ::__set
      */
-    public function testSetProperty()
+    public function testSetProperty(): void
     {
         $object   = new MyTestClass();
         $expected = mt_rand();

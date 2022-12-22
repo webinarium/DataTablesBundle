@@ -17,13 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \DataTables\Order
+ *
+ * @internal
  */
-class OrderTest extends TestCase
+final class OrderTest extends TestCase
 {
     /**
      * @covers ::__construct
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $column = random_int(1, 10);
         $dir    = Order::DESC;
@@ -37,7 +39,7 @@ class OrderTest extends TestCase
     /**
      * @covers ::jsonSerialize
      */
-    public function testJsonSerializable()
+    public function testJsonSerializable(): void
     {
         $column = random_int(1, 10);
         $dir    = Order::DESC;

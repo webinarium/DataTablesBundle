@@ -61,7 +61,7 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
                 $column['data'],
                 $column['name'],
                 $column['searchable'] === 'true',
-                $column['orderable'] === 'true',
+                $column['orderable']  === 'true',
                 new Search($column['search']['value'], $column['search']['regex'] === 'true')
             );
         }, $params->columns);
@@ -74,7 +74,7 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $callback = function (\JsonSerializable $item) {
             return $item->jsonSerialize();

@@ -18,13 +18,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @coversDefaultClass \DataTables\DataTableQuery
+ *
+ * @internal
  */
-class DataTableQueryTest extends TestCase
+final class DataTableQueryTest extends TestCase
 {
     /** @var Parameters */
     protected $parameters;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -56,7 +58,7 @@ class DataTableQueryTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testSuccess()
+    public function testSuccess(): void
     {
         $query = new DataTableQuery($this->parameters);
 
@@ -90,7 +92,7 @@ class DataTableQueryTest extends TestCase
     /**
      * @covers ::jsonSerialize
      */
-    public function testJsonSerializable()
+    public function testJsonSerializable(): void
     {
         $expected = json_encode([
             'start'   => 20,

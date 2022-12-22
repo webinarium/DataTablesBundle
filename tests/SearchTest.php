@@ -17,13 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \DataTables\Search
+ *
+ * @internal
  */
-class SearchTest extends TestCase
+final class SearchTest extends TestCase
 {
     /**
      * @covers ::__construct
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $value = bin2hex(random_bytes(10));
         $regex = true;
@@ -37,7 +39,7 @@ class SearchTest extends TestCase
     /**
      * @covers ::jsonSerialize
      */
-    public function testJsonSerializable()
+    public function testJsonSerializable(): void
     {
         $value = bin2hex(random_bytes(10));
         $regex = true;

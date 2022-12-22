@@ -19,7 +19,7 @@ use DataTables\DataTableResults;
 
 class AutoloadedTestDataTable extends AbstractDataTableHandler
 {
-    const ID = 'testAuto';
+    public const ID = 'testAuto';
 
     public function handle(DataTableQuery $request): DataTableResults
     {

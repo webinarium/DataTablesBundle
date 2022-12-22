@@ -1,4 +1,4 @@
-[![PHP](https://img.shields.io/badge/PHP-7.0%2B-blue.svg)](https://secure.php.net/migration70)
+[![PHP](https://img.shields.io/badge/PHP-7.1%2B-blue.svg)](https://secure.php.net/migration71)
 [![Latest Stable Version](https://poser.pugx.org/webinarium/datatables-bundle/v/stable)](https://packagist.org/packages/webinarium/datatables-bundle)
 [![Build Status](https://travis-ci.com/webinarium/DataTablesBundle.svg?branch=master)](https://travis-ci.com/github/webinarium/DataTablesBundle)
 [![Code Coverage](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/webinarium/DataTablesBundle/?branch=master)
@@ -10,7 +10,7 @@ This bundle helps to implement data source actions for [DataTables](http://www.d
 
 ## Requirements
 
-PHP needs to be a minimum version of PHP 7.0.
+PHP needs to be a minimum version of PHP 7.1.
 
 Symfony must be of 2.7 or above.
 

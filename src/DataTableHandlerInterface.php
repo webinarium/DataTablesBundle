@@ -18,16 +18,16 @@ namespace DataTables;
  */
 interface DataTableHandlerInterface
 {
-    const ID = null;
+    public const ID = null;
 
     /**
      * Handles specified DataTable request.
      *
      * @param DataTableQuery $request
      *
-     * @throws DataTableException
-     *
      * @return DataTableResults
+     *
+     * @throws DataTableException
      */
     public function handle(DataTableQuery $request): DataTableResults;
 }

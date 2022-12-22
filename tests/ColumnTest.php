@@ -17,13 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \DataTables\Column
+ *
+ * @internal
  */
-class ColumnTest extends TestCase
+final class ColumnTest extends TestCase
 {
     /**
      * @covers ::__construct
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $data       = bin2hex(random_bytes(10));
         $name       = bin2hex(random_bytes(10));
@@ -45,7 +47,7 @@ class ColumnTest extends TestCase
     /**
      * @covers ::jsonSerialize
      */
-    public function testJsonSerializable()
+    public function testJsonSerializable(): void
     {
         $data       = bin2hex(random_bytes(10));
         $name       = bin2hex(random_bytes(10));

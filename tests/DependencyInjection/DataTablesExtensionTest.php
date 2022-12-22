@@ -18,14 +18,16 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * @coversDefaultClass \DataTables\DependencyInjection\DataTablesExtension
+ *
+ * @internal
  */
-class DataTablesExtensionTest extends TestCase
+final class DataTablesExtensionTest extends TestCase
 {
     /**
      * @covers ::load
      * @covers ::process
      */
-    public function testLoadServices()
+    public function testLoadServices(): void
     {
         $container = new ContainerBuilder();
 

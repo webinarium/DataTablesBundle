@@ -17,13 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \DataTables\DataTableResults
+ *
+ * @internal
  */
-class DataTableResultsTest extends TestCase
+final class DataTableResultsTest extends TestCase
 {
     /**
      * @covers ::jsonSerialize
      */
-    public function testJsonSerializable()
+    public function testJsonSerializable(): void
     {
         $expected = json_encode([
             'draw'            => 0,

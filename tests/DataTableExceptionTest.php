@@ -17,13 +17,15 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \DataTables\DataTableException
+ *
+ * @internal
  */
-class DataTableExceptionTest extends TestCase
+final class DataTableExceptionTest extends TestCase
 {
     /**
      * @covers ::__construct
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $expectedMessage = 'Error message';
         $expectedCode    = mt_rand();

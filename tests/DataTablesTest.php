@@ -21,20 +21,24 @@ use Symfony\Component\Validator\Validation;
 
 /**
  * @coversDefaultClass \DataTables\DataTables
+ *
+ * @internal
  */
-class DataTablesTest extends TestCase
+final class DataTablesTest extends TestCase
 {
     /** @var DataTablesInterface */
     protected $datatables;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $container = new ContainerBuilder();
         $logger    = new NullLogger();
 
         $validator = Validation::createValidatorBuilder()
+            ->addDefaultDoctrineAnnotationReader()
             ->enableAnnotationMapping()
-            ->getValidator();
+            ->getValidator()
+        ;
 
         $container->set('logger', $logger);
         $container->set('validator', $validator);
@@ -61,7 +65,7 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
-    public function testSuccess()
+    public function testSuccess(): void
     {
         $draw = mt_rand();
 
@@ -89,7 +93,7 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
-    public function testDefaults()
+    public function testDefaults(): void
     {
         $draw = mt_rand();
 
@@ -117,7 +121,7 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
-    public function testAutoloaded()
+    public function testAutoloaded(): void
     {
         $draw = mt_rand();
 
@@ -145,7 +149,7 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
-    public function testCustomData()
+    public function testCustomData(): void
     {
         $draw = mt_rand();
 
@@ -178,7 +182,7 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
-    public function testPost()
+    public function testPost(): void
     {
         $draw = mt_rand();
 
@@ -213,7 +217,7 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
-    public function testException()
+    public function testException(): void
     {
         $this->expectException(DataTableException::class);
         $this->expectExceptionMessage('Something gone wrong.');
@@ -233,7 +237,7 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
-    public function testBadQuery()
+    public function testBadQuery(): void
     {
         $this->expectException(DataTableException::class);
         $this->expectExceptionMessage('This value should not be null.');
@@ -252,7 +256,7 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
-    public function testUnknownService()
+    public function testUnknownService(): void
     {
         $this->expectException(DataTableException::class);
         $this->expectExceptionMessage('Unknown DataTable ID.');
@@ -272,7 +276,7 @@ class DataTablesTest extends TestCase
     /**
      * @covers ::handle
      */
-    public function testInvalidResults()
+    public function testInvalidResults(): void
     {
         $this->expectException(DataTableException::class);
         $this->expectExceptionMessage('This value should not be null.');
