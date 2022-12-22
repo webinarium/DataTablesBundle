@@ -21,15 +21,15 @@ use Symfony\Component\HttpFoundation\Request;
 interface DataTablesInterface
 {
     /**
-     * Handles specified DataTable request.
+     * Handles specified HTTP request.
      *
-     * @param Request $request Original request
-     * @param string  $id      DataTable ID
+     * @param Request $request Original HTTP request
+     * @param string  $id      ID of the DataTable the request belongs to
      * @param array   $context Optional context of the request
      *
      * @return DataTableResults Object with data to return in JSON response
      *
      * @throws DataTableException
      */
-    public function handle(Request $request, string $id, array $context): DataTableResults;
+    public function handle(Request $request, string $id, array $context = []): DataTableResults;
 }

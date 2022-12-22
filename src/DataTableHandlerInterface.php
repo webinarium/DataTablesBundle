@@ -18,10 +18,18 @@ namespace DataTables;
  */
 interface DataTableHandlerInterface
 {
+    /**
+     * Optional DataTable ID.
+     */
     public const ID = null;
 
     /**
      * Handles specified DataTable request.
+     *
+     * @param DataTableQuery $request Original request
+     * @param array          $context Optional context of the request
+     *
+     * @return DataTableResults Object with data to return in JSON response
      *
      * @throws DataTableException
      */

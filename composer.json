@@ -8,6 +8,11 @@
     ],
     "homepage": "https://github.com/webinarium/DataTablesBundle",
     "license": "MIT",
+    "support": {
+        "source": "https://github.com/webinarium/DataTablesBundle",
+        "wiki": "https://github.com/webinarium/DataTablesBundle/wiki",
+        "issues": "https://github.com/webinarium/DataTablesBundle/issues"
+    },
     "require": {
         "php": ">=7.1",
         "ext-json": "*",
@@ -29,10 +34,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DataTables\\": [
-                "src/",
-                "tests/"
-            ]
+            "DataTables\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DataTables\\": "tests/"
         }
     }
 }

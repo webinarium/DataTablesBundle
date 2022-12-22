@@ -16,7 +16,7 @@ namespace DataTables;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Sent parameters from DataTables plugin.
+ * Parameters received from DataTables plugin.
  *
  * @see https://www.datatables.net/manual/server-side
  *

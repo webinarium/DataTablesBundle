@@ -47,14 +47,14 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
             'true' === $params->search['regex']
         );
 
-        $this->order = array_map(function (array $order) {
+        $this->order = array_map(function (array $order): Order {
             return new Order(
                 (int) $order['column'],
                 $order['dir']
             );
         }, $params->order);
 
-        $this->columns = array_map(function (array $column) {
+        $this->columns = array_map(function (array $column): Column {
             return new Column(
                 $column['data'],
                 $column['name'],
@@ -72,7 +72,7 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
      */
     public function jsonSerialize(): array
     {
-        $callback = function (\JsonSerializable $item) {
+        $callback = function (\JsonSerializable $item): array {
             return $item->jsonSerialize();
         };
 

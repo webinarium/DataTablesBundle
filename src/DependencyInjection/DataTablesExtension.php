@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 /**
  * This is the class that loads and manages the bundle configuration.
  *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
+ * To learn more see {@link https://symfony.com/doc/5.4/bundles/extension.html}
  */
 class DataTablesExtension extends Extension implements CompilerPassInterface
 {
@@ -48,7 +48,6 @@ class DataTablesExtension extends Extension implements CompilerPassInterface
         $definition = $container->findDefinition('datatables');
         $services   = $container->findTaggedServiceIds('datatable');
 
-        /** @var array $tags */
         foreach ($services as $id => $tags) {
             foreach ($tags as $tag) {
                 $definition->addMethodCall('addService', [
