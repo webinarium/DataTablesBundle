@@ -23,11 +23,6 @@ interface DataTableHandlerInterface
     /**
      * Handles specified DataTable request.
      *
-     * @param DataTableQuery $request
-     * @param array          $context
-     *
-     * @return DataTableResults
-     *
      * @throws DataTableException
      */
     public function handle(DataTableQuery $request, array $context = []): DataTableResults;

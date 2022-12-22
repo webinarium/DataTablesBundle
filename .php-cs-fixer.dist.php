@@ -12,7 +12,6 @@ return (new PhpCsFixer\Config())
         //--------------------------------------------------------------
         //  Rule sets
         //--------------------------------------------------------------
-
         '@PSR1'               => true,
         '@PSR2'               => true,
         '@Symfony'            => true,
@@ -25,17 +24,10 @@ return (new PhpCsFixer\Config())
         //--------------------------------------------------------------
         //  Rules override
         //--------------------------------------------------------------
-
-        'binary_operator_spaces'        => ['default' => 'align'],
-        'blank_line_before_statement'   => false,
-        'braces'                        => false,
-        'concat_space'                  => ['spacing' => 'one'],
-        'native_function_invocation'    => false,
-        'no_superfluous_phpdoc_tags'    => false,
-        'phpdoc_annotation_without_dot' => false,
-        'self_static_accessor'          => true,
-        'single_line_comment_spacing'   => false,
-        'yoda_style'                    => false,
+        'binary_operator_spaces'      => ['default' => 'align'],
+        'native_function_invocation'  => false,
+        'self_static_accessor'        => true,
+        'single_line_comment_spacing' => false,
     ])
     ->setFinder($finder)
 ;

@@ -25,14 +25,11 @@ class DataTables implements DataTablesInterface
     protected $logger;
     protected $validator;
 
-    /** @var DataTableHandlerInterface[] List of registered DataTable services. */
+    /** @var DataTableHandlerInterface[] List of registered DataTable services */
     protected $services = [];
 
     /**
      * @codeCoverageIgnore Dependency Injection constructor.
-     *
-     * @param LoggerInterface    $logger
-     * @param ValidatorInterface $validator
      */
     public function __construct(LoggerInterface $logger, ValidatorInterface $validator)
     {
@@ -43,14 +40,14 @@ class DataTables implements DataTablesInterface
     /**
      * Registers specified DataTable handler.
      *
-     * @param DataTableHandlerInterface $service Service of the DataTable handler.
-     * @param string                    $id      DataTable ID.
+     * @param DataTableHandlerInterface $service Service of the DataTable handler
+     * @param null|string               $id      DataTable ID
      */
     public function addService(DataTableHandlerInterface $service, string $id = null)
     {
         $service_id = $id ?? $service::ID;
 
-        if ($service_id !== null) {
+        if (null !== $service_id) {
             $this->services[$service_id] = $service;
         }
     }
@@ -93,6 +90,7 @@ class DataTables implements DataTablesInterface
         if (count($violations)) {
             $message = $violations->get(0)->getMessage();
             $this->logger->error($message, ['request']);
+
             throw new DataTableException($message);
         }
 
@@ -100,6 +98,7 @@ class DataTables implements DataTablesInterface
         if (!array_key_exists($id, $this->services)) {
             $message = 'Unknown DataTable ID.';
             $this->logger->error($message, [$id]);
+
             throw new DataTableException($message);
         }
 
@@ -113,12 +112,11 @@ class DataTables implements DataTablesInterface
 
         try {
             $result = $this->services[$id]->handle($query, $context);
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->logger->error($e->getMessage(), [$this->services[$id]]);
+
             throw new DataTableException($e->getMessage());
-        }
-        finally {
+        } finally {
             $timer_stopped = microtime(true);
             $this->logger->debug('DataTable processing time', [$timer_stopped - $timer_started, $this->services[$id]]);
         }
@@ -129,6 +127,7 @@ class DataTables implements DataTablesInterface
         if (count($violations)) {
             $message = $violations->get(0)->getMessage();
             $this->logger->error($message, ['response']);
+
             throw new DataTableException($message);
         }
 

@@ -23,11 +23,11 @@ interface DataTablesInterface
     /**
      * Handles specified DataTable request.
      *
-     * @param Request $request Original request.
-     * @param string  $id      DataTable ID.
-     * @param array   $context Optional context of the request.
+     * @param Request $request Original request
+     * @param string  $id      DataTable ID
+     * @param array   $context Optional context of the request
      *
-     * @return DataTableResults Object with data to return in JSON response.
+     * @return DataTableResults Object with data to return in JSON response
      *
      * @throws DataTableException
      */

@@ -18,8 +18,8 @@ namespace DataTables;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property string $value Search value.
- * @property bool   $regex Whether the search value should be treated as a regular expression for advanced searching.
+ * @property string $value Search value
+ * @property bool   $regex Whether the search value should be treated as a regular expression for advanced searching
  */
 class Search extends ValueObject implements \JsonSerializable
 {
@@ -28,9 +28,6 @@ class Search extends ValueObject implements \JsonSerializable
 
     /**
      * Initializing constructor.
-     *
-     * @param null|string $value
-     * @param bool        $regex
      */
     public function __construct(string $value = null, bool $regex = false)
     {
@@ -40,8 +37,6 @@ class Search extends ValueObject implements \JsonSerializable
 
     /**
      * {@inheritdoc}
-     *
-     * @return array
      */
     public function jsonSerialize(): array
     {

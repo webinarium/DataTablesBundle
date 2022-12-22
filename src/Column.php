@@ -18,11 +18,11 @@ namespace DataTables;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property string $data       Column's data source.
- * @property string $name       Column's name.
- * @property bool   $searchable Flag to indicate if this column is searchable or not.
- * @property bool   $orderable  Flag to indicate if this column is orderable or not.
- * @property Search $search     Search value to apply to this specific column.
+ * @property string $data       Column's data source
+ * @property string $name       Column's name
+ * @property bool   $searchable Flag to indicate if this column is searchable or not
+ * @property bool   $orderable  Flag to indicate if this column is orderable or not
+ * @property Search $search     Search value to apply to this specific column
  */
 class Column extends ValueObject implements \JsonSerializable
 {
@@ -34,12 +34,6 @@ class Column extends ValueObject implements \JsonSerializable
 
     /**
      * Initializing constructor.
-     *
-     * @param string $data
-     * @param string $name
-     * @param bool   $searchable
-     * @param bool   $orderable
-     * @param Search $search
      */
     public function __construct(string $data, string $name, bool $searchable, bool $orderable, Search $search)
     {
@@ -52,8 +46,6 @@ class Column extends ValueObject implements \JsonSerializable
 
     /**
      * {@inheritdoc}
-     *
-     * @return array
      */
     public function jsonSerialize(): array
     {

@@ -20,9 +20,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property int   $recordsTotal    Total records, before filtering.
- * @property int   $recordsFiltered Total records, after filtering.
- * @property array $data            The data to be displayed in the table.
+ * @property int   $recordsTotal    Total records, before filtering
+ * @property int   $recordsFiltered Total records, after filtering
+ * @property array $data            The data to be displayed in the table
  */
 class DataTableResults implements \JsonSerializable
 {
@@ -57,8 +57,6 @@ class DataTableResults implements \JsonSerializable
 
     /**
      * Convert results into array as expected by DataTables plugin.
-     *
-     * @return array
      */
     public function jsonSerialize(): array
     {
