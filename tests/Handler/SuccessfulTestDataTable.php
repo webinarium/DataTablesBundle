@@ -19,12 +19,12 @@ use DataTables\DataTableResults;
 
 class SuccessfulTestDataTable implements DataTableHandlerInterface
 {
-    public function handle(DataTableQuery $request): DataTableResults
+    public function handle(DataTableQuery $request, array $context = []): DataTableResults
     {
         $results = new DataTableResults();
 
         $results->recordsTotal    = 100;
-        $results->recordsFiltered = 10;
+        $results->recordsFiltered = $context['test'] ?? 10;
         $results->data            = [];
 
         return $results;

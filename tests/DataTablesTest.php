@@ -81,11 +81,11 @@ final class DataTablesTest extends TestCase
         $expected = [
             'draw'            => $draw,
             'recordsTotal'    => 100,
-            'recordsFiltered' => 10,
+            'recordsFiltered' => 20,
             'data'            => [],
         ];
 
-        $results = $this->datatables->handle($request, 'testSuccess');
+        $results = $this->datatables->handle($request, 'testSuccess', ['test' => 20]);
 
         self::assertSame(json_encode($expected), json_encode($results));
     }

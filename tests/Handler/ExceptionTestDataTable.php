@@ -20,7 +20,7 @@ use DataTables\DataTableResults;
 
 class ExceptionTestDataTable implements DataTableHandlerInterface
 {
-    public function handle(DataTableQuery $request): DataTableResults
+    public function handle(DataTableQuery $request, array $context = []): DataTableResults
     {
         throw new DataTableException('Something gone wrong.');
     }

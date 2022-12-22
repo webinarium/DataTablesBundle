@@ -21,7 +21,7 @@ class AutoloadedTestDataTable extends AbstractDataTableHandler
 {
     public const ID = 'testAuto';
 
-    public function handle(DataTableQuery $request): DataTableResults
+    public function handle(DataTableQuery $request, array $context = []): DataTableResults
     {
         $results = new DataTableResults();
 

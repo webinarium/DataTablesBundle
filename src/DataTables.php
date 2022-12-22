@@ -58,7 +58,7 @@ class DataTables implements DataTablesInterface
     /**
      * {@inheritdoc}
      */
-    public function handle(Request $request, string $id): DataTableResults
+    public function handle(Request $request, string $id, array $context = []): DataTableResults
     {
         $this->logger->debug('Handle DataTable request', [$id]);
 
@@ -112,7 +112,7 @@ class DataTables implements DataTablesInterface
         $timer_started = microtime(true);
 
         try {
-            $result = $this->services[$id]->handle($query);
+            $result = $this->services[$id]->handle($query, $context);
         }
         catch (\Exception $e) {
             $this->logger->error($e->getMessage(), [$this->services[$id]]);

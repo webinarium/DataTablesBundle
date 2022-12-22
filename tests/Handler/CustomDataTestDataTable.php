@@ -19,7 +19,7 @@ use DataTables\DataTableResults;
 
 class CustomDataTestDataTable implements DataTableHandlerInterface
 {
-    public function handle(DataTableQuery $request): DataTableResults
+    public function handle(DataTableQuery $request, array $context = []): DataTableResults
     {
         $results = new DataTableResults();
 
